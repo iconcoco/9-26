@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 50px;
+            transition: all 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <input type="button" value="button">
+</body>
+
+</html>
+<script>
+    var box = document.getElementsByClassName('box')[0],
+        btn = document.getElementsByTagName('input')[0];
+
+    var flag = 0;
+    box.onmouseover = function(e) {
+        var w = this.clientWidth, //盒子宽
+            h = this.clientHeight, //盒子高
+            x = e.offsetX, //相对盒子的左上角的x坐标
+            y = e.offsetY;
+
+        dir({
+            width: w,
+            height: h,
+            offsetX: x,
+            offsetY: y,
+            seccess: {
+                up: function() {
+                    console.log('上上上')
+                },
+                down: function() {
+                    console.log('下下下')
+                },
+                left: function() {
+                    console.log('左左左')
+                },
+                right: function() {
+                    console.log("右右右")
+                }
+            }
+        });
+    };
+
+    box.onmouseout = function(e) {
+        var w = this.clientWidth, //盒子宽
+            h = this.clientHeight, //盒子高
+            x = e.offsetX, //相对盒子的左上角的x坐标
+            y = e.offsetY;
+        dir({
+            width: w,
+            height: h,
+            offsetX: x,
+            offsetY: y,
+            seccess: {
+                up: function() {
+                    console.log('上上上出出出')
+                },
+                down: function() {
+                    console.log('下下下出出出')
+                },
+                left: function() {
+                    console.log('左左左出出出')
+                },
+                right: function() {
+                    console.log("右右右出出出")
+                }
+            }
+        });
+    }
+
+    function dir(obj) {
+        var w = obj.width, //宽
+            h = obj.height, //高
+            x = obj.offsetX,
+            y = -obj.offsetY,
+            k = Math.floor(h / w);
+
+        if (y > (-k * x) && y > (k * x - h)) {
+            obj.seccess.up();
+        };
+
+        if (y > (-k * x) && y < (k * x - h)) {
+            obj.seccess.right();
+        };
+
+        if (y < (-k * x) && y < (k * x - h)) {
+            obj.seccess.down();
+        };
+
+        if (y < (-k * x) && (k * x - h) < y) {
+            obj.seccess.left();
+        };
+    }
+</script>
