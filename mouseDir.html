@@ -15,25 +15,50 @@
         .box {
             width: 200px;
             height: 200px;
-            background-color: red;
+            border: 1px solid red;
             margin: 50px;
             transition: all 1s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .shadow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: -100%;
+            background-color: rgba(0, 0, 0, .5);
+            /*transition: all .5s;*/
+        }
+        
+        .canvas {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 999;
         }
     </style>
 </head>
 
 <body>
-    <div class="box"></div>
+    <div class="box">
+        <div class="canvas"></div>
+        <div class="shadow"></div>
+    </div>
     <input type="button" value="button">
 </body>
 
 </html>
+<script src="./plugin/jquery-2.2.2.min.js"></script>
 <script>
-    var box = document.getElementsByClassName('box')[0],
+    var box = document.getElementsByClassName('canvas')[0],
         btn = document.getElementsByTagName('input')[0];
 
     var flag = 0;
     box.onmouseover = function(e) {
+        e.stopPropagation();
         var w = this.clientWidth, //盒子宽
             h = this.clientHeight, //盒子高
             x = e.offsetX, //相对盒子的左上角的x坐标
@@ -46,22 +71,52 @@
             offsetY: y,
             seccess: {
                 up: function() {
-                    console.log('上上上')
+                    // console.log("上进");
+                    $(".shadow").css({
+                        top: "-100%",
+                        left: "0"
+                    });
+                    $(".shadow").stop().animate({
+                        top: "0",
+                        left: "0"
+                    }, 200);
                 },
                 down: function() {
-                    console.log('下下下')
+                    $(".shadow").css({
+                        top: "100%",
+                        left: "0"
+                    });
+                    $(".shadow").stop().animate({
+                        top: "0",
+                        left: "0"
+                    }, 200);
                 },
                 left: function() {
-                    console.log('左左左')
+                    $(".shadow").css({
+                        top: "0",
+                        left: "-100%"
+                    });
+                    $(".shadow").stop().animate({
+                        top: "0",
+                        left: "0"
+                    }, 200)
                 },
                 right: function() {
-                    console.log("右右右")
+                    $(".shadow").css({
+                        top: "0",
+                        left: "100%"
+                    });
+                    $(".shadow").stop().animate({
+                        top: "0",
+                        left: "0"
+                    }, 200)
                 }
             }
         });
     };
 
     box.onmouseout = function(e) {
+        e.stopPropagation();
         var w = this.clientWidth, //盒子宽
             h = this.clientHeight, //盒子高
             x = e.offsetX, //相对盒子的左上角的x坐标
@@ -73,22 +128,49 @@
             offsetY: y,
             seccess: {
                 up: function() {
-                    console.log('上上上出出出')
+                    // console.log("向上走");
+                    $(".shadow").stop().animate({
+                        top: "-100%",
+                        left: "0"
+                    }, 200)
                 },
                 down: function() {
-                    console.log('下下下出出出')
+                    $(".shadow").stop().animate({
+                        top: "100%",
+                        left: "0"
+                    }, 200)
                 },
                 left: function() {
-                    console.log('左左左出出出')
+                    $(".shadow").stop().animate({
+                        top: "0",
+                        left: "-100%"
+                    }, 200)
                 },
                 right: function() {
-                    console.log("右右右出出出")
+                    $(".shadow").stop().animate({
+                        top: "0",
+                        left: "100%"
+                    }, 200)
                 }
             }
         });
     }
 
+
+
     function dir(obj) {
+        /*
+            obj={
+                width:,//元素的宽
+                height,//元素的高
+                offsetX:,//鼠标相对盒子的x方向距离
+                offsetY:,//鼠标相对盒子的y方向距离
+                up:fn //回调
+                down:fn
+                left:fn
+                right:fn
+            }
+        */
         var w = obj.width, //宽
             h = obj.height, //高
             x = obj.offsetX,
