@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .box {
+            height: 200px;
+            width: 500px;
+            border: 1px solid red;
+            margin: 100px auto;
+            position: relative;
+        }
+        
+        ul {
+            list-style: none;
+            position: absolute;
+            top: 0;
+            height: 100%;
+            /*width: 500%;*/
+        }
+        
+        li {
+            float: left;
+            height: 100%;
+            width: 500px;
+        }
+        
+        li.l1 {
+            background-color: pink;
+        }
+        
+        li.l2 {
+            background-color: green;
+        }
+        
+        li.l3 {
+            background-color: skyblue;
+        }
+        
+        .sign {
+            position: absolute;
+            width: 100%;
+            bottom: 10px;
+            z-index: 10;
+            text-align: center;
+        }
+        
+        a {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 1px solid red;
+        }
+        
+        a.active {
+            background-color: purple;
+        }
+        
+        input {
+            position: absolute;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .pre {
+            left: 0;
+        }
+        
+        input.next {
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul class="tbs-swiper">
+            <li class="l1 tbs-swiper-items">1</li>
+            <li class="l2 tbs-swiper-items">2</li>
+            <li class="l3 tbs-swiper-items">3</li>
+
+        </ul>
+        <div class="tbs-sign sign">
+
+        </div>
+        <input type="button" class="next" value="next">
+        <input type="button" class="pre" value="pre">
+    </div>
+
+
+</body>
+
+
+</html>
+<script src="./plugin/jquery-2.2.2.min.js"></script>
+<script src="./plugin/mySwiper.js"></script>
+<script>
+    $(".box").mySwiper({
+        speed: 500,
+        looper: 3000,
+        pageButton: false,
+        pagination: false
+    });
+</script>
