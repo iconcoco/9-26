@@ -20,6 +20,7 @@
             transition: all 1s;
             position: relative;
             overflow: hidden;
+            float: left;
         }
         
         .shadow {
@@ -47,22 +48,45 @@
         <div class="canvas"></div>
         <div class="shadow"></div>
     </div>
+    <div class="box">
+        <div class="canvas"></div>
+        <div class="shadow"></div>
+    </div>
+    <div class="box">
+        <div class="canvas"></div>
+        <div class="shadow"></div>
+    </div>
+    <div class="box">
+        <div class="canvas"></div>
+        <div class="shadow"></div>
+    </div>
+    <div class="box">
+        <div class="canvas"></div>
+        <div class="shadow"></div>
+    </div>
+    <div class="box">
+        <div class="canvas"></div>
+        <div class="shadow"></div>
+    </div>
     <input type="button" value="button">
 </body>
 
 </html>
 <script src="./plugin/jquery-2.2.2.min.js"></script>
 <script>
-    var box = document.getElementsByClassName('canvas')[0],
+    var box = $(".canvas"),
         btn = document.getElementsByTagName('input')[0];
 
     var flag = 0;
-    box.onmouseover = function(e) {
+    box.on("mouseenter", function(e) {
         e.stopPropagation();
         var w = this.clientWidth, //盒子宽
             h = this.clientHeight, //盒子高
             x = e.offsetX, //相对盒子的左上角的x坐标
             y = e.offsetY;
+
+
+        var shadow = $(this).siblings(".shadow");
 
         dir({
             width: w,
@@ -72,55 +96,58 @@
             seccess: {
                 up: function() {
                     // console.log("上进");
-                    $(".shadow").css({
+                    shadow.css({
                         top: "-100%",
                         left: "0"
                     });
-                    $(".shadow").stop().animate({
+                    shadow.stop().animate({
                         top: "0",
                         left: "0"
                     }, 200);
                 },
                 down: function() {
-                    $(".shadow").css({
+                    shadow.css({
                         top: "100%",
                         left: "0"
                     });
-                    $(".shadow").stop().animate({
+                    shadow.stop().animate({
                         top: "0",
                         left: "0"
                     }, 200);
                 },
                 left: function() {
-                    $(".shadow").css({
+                    shadow.css({
                         top: "0",
                         left: "-100%"
                     });
-                    $(".shadow").stop().animate({
+                    shadow.stop().animate({
                         top: "0",
                         left: "0"
                     }, 200)
                 },
                 right: function() {
-                    $(".shadow").css({
+                    shadow.css({
                         top: "0",
                         left: "100%"
                     });
-                    $(".shadow").stop().animate({
+                    shadow.stop().animate({
                         top: "0",
                         left: "0"
                     }, 200)
                 }
             }
         });
-    };
+    });
 
-    box.onmouseout = function(e) {
+    box.on("mouseleave", function(e) {
         e.stopPropagation();
         var w = this.clientWidth, //盒子宽
             h = this.clientHeight, //盒子高
             x = e.offsetX, //相对盒子的左上角的x坐标
             y = e.offsetY;
+
+
+        var shadow = $(this).siblings(".shadow");
         dir({
             width: w,
             height: h,
@@ -129,32 +156,32 @@
             seccess: {
                 up: function() {
                     // console.log("向上走");
-                    $(".shadow").stop().animate({
+                    shadow.stop().animate({
                         top: "-100%",
                         left: "0"
                     }, 200)
                 },
                 down: function() {
-                    $(".shadow").stop().animate({
+                    shadow.stop().animate({
                         top: "100%",
                         left: "0"
                     }, 200)
                 },
                 left: function() {
-                    $(".shadow").stop().animate({
+                    shadow.stop().animate({
                         top: "0",
                         left: "-100%"
                     }, 200)
                 },
                 right: function() {
-                    $(".shadow").stop().animate({
+                    shadow.stop().animate({
                         top: "0",
                         left: "100%"
                     }, 200)
                 }
             }
         });
-    }
+    });
 
 
 
