@@ -1,0 +1,1772 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>{$seo_info.title}</title>
+    <meta content="{$seo_info.keywords}" name="keywords">
+    <meta content="{$seo_info.description}" name="description">
+
+    <neq name="mobile_url" value="">
+        <link href="{$mobile_url}" rel="alternate" media="only screen and (max-width: 1000px)" />
+    </neq>
+    <neq name="canonical" value="">
+        <link rel="canonical" href="{$canonical}">
+    </neq>
+
+    <link rel="stylesheet" href="{$Think.TBS_STATIC}/homepage/css/new_pc/base_li.css?v={$Think.CDNTIME}">
+    <link rel="stylesheet" href="{$Think.TBS_STATIC}/homepage/css/new_pc/header.css?v={$Think.CDNTIME}">
+    <link rel="stylesheet" href="{$Think.TBS_STATIC}/homepage/css/new_pc/pc_index.css?v={$Think.CDNTIME}">
+    <link rel="stylesheet" href="{$Think.TBS_STATIC}/homepage/css/new_pc/footer.css?v={$Think.CDNTIME}">
+
+    <link rel="stylesheet" href="./抽离/底部_侧边_微信弹窗/fixednav_order.css">
+
+    <!--[if lt IE 9]>
+        <script src="{$Think.TBS_STATIC}/lib/html5shiv.min.js?v={$Think.CDNTIME}"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <!-- 头部 -->
+    <section class="header">
+        <header data-cityurl="{$Think.TBS_CITY_DOMAIN}" data-wwwurl="{$Think.TBS_WWW_DOMAIN}">
+            <!-- 地理定位 -->
+            <div class="banner clearfix">
+                <div class="location fl clearfix">
+                    <div class="position fl">
+                        <span class="local-icon"></span>
+                        <a href="javascript:;">{$cityInfo.call_name}</a>
+                    </div>
+                    <div class="choose-city down-arrow fl">
+                        <a href="javascript:;" class="down-arrow">切换城市 <span ></span> </a>
+                        <div class="hot-city">
+                            <h2>热门城市</h2>
+                            <div class="city-cont">
+                                <a href="http://sh.tobosu.com/">上海</a>
+                                <a href="http://gz.tobosu.com/">广州</a>
+                                <a href="http://szs.tobosu.com/">深圳</a>
+                                <a href="http://tj.tobosu.com/">天津</a>
+                                <a href="http://hz.tobosu.com/">杭州</a>
+                                <a href="http://nb.tobosu.com/">宁波</a>
+                                <a href="http://nc.tobosu.com/">南昌</a>
+                                <a href="http://zz.tobosu.com/">郑州</a>
+                                <a href="http://cs.tobosu.com/">长沙</a>
+                                <a href="http://wx.tobosu.com/">无锡</a>
+                                <a href="http://nj.tobosu.com/">南京</a>
+                                <a href="http://sy.tobosu.com/">沈阳</a>
+                                <a href="http://xa.tobosu.com/">西安</a>
+                                <a href="http://wh.tobosu.com/">武汉</a>
+                                <a href="http://zh.tobosu.com/">珠海</a>
+                                <a href="http://cq.tobosu.com/">重庆</a>
+                                <a href="http://fz.tobosu.com/">福州</a>
+                                <a href="http://hf.tobosu.com/">合肥</a>
+                                <a href="http://jn.tobosu.com/">济南</a>
+                                <a href="http://qd.tobosu.com/">青岛</a>
+                            </div>
+                            <a href="http://{$Think.TBS_WWW_DOMAIN}/change_city"> 更多城市>> </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="login fr">
+                    <ul class="clearfix">
+                        <!-- 用户的信息 -->
+                        <li class="down-arrow already">
+                            <a href="javascript:;" class="has-login-user-name"> <b class="user-name">测试中心</b> <span></span></a>
+                            <div class="personal">
+                                <p><a href="javascript:;" id="personCenter">个人中心</a> </p>
+                                <p><a href="javascript:;" id="ask">装修问答</a> </p>
+                                <p><a href="javascript:;" id="orders">装修订单</a> </p>
+                                <p><a href="javascript:;" id="logout">退出</a> </p>
+                            </div>
+                        </li>
+                        <li class="down-arrow personal-news already">
+                            <a href="javascript:;"><i class=""></i> 消息中心 <span></span></a>
+                            <div class="news">
+                                <p><a href="javascript:;" id="askRemind">问答提醒 <span>0</span></a> </p>
+                                <p><a href="javascript:;" id="msgCommet">留言评论 <span>0</span></a> </p>
+
+                                <p><a href="javascript:;" id="systemmsg">系统消息 <span>0</span></a> </p>
+                            </div>
+                        </li>
+                        <li class="pleace-login">
+                            <a href="" id="login" rel="nofollow">请登录</a>
+                        </li>
+                        <li id="registered">
+                            <a href="http://{$Think.TBS_WWW_DOMAIN}/passport/register.html" rel="nofollow">免费注册</a>
+                        </li>
+                        <li class="down-arrow">
+                            <a href="http://{$Think.TBS_WWW_DOMAIN}/zhao_shang">商务合作 <span></span></a>
+                            <div class="cooperation">
+                                <p class="p1">
+                                    <a href="http://{$Think.TBS_WWW_DOMAIN}/zhao_shang" class="tel">电话联系</a>
+                                    <a href="http://wpa.qq.com/msgrd?v=3&uin={$manager.qq_work}&site=qq&menu=yes" target="_blank" class="qq">QQ</a>
+                                    <span></span>
+                                </p>
+                                <p class="p2">商务合作</p>
+                                <p class="p3">{$manager.phone}</p>
+                            </div>
+                        </li>
+                        <li class="down-arrow">
+                            <a href="javascript:;">关注微信 <span ></span></a>
+                            <div class="fllow-wechat">
+                                <!-- <img src="" alt="土拨鼠公众微信号"> -->
+                                <div class="img"></div>
+                                <p>土拨鼠微信</p>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="contact-tobosu-qq">联系客服</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <!-- 导航菜单 -->
+        <section class="menu">
+            <div class="banner clearfix">
+                <div class="logo fl">
+                    <!-- logo -->
+                    <h1 class="fl">土拨鼠
+                        <a href="javascript:;" target="_blank"></a>
+                    </h1>
+                    <div class="advert fl">
+                        <img src="{$Think.TBS_STATIC}/homepage/images/new_pc/logo-ad.gif" alt="">
+                    </div>
+                </div>
+
+                <!-- 查找 -->
+                <div class="search fr">
+                    <div>
+                        <a class="key" href="javascript:void(0);" data-value="1">
+                            <span class="txt">效果图</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="down-select">
+                            <li><a href="javascript:void(0);" data-value="1">效果图</a></li>
+                            <li><a href="javascript:void(0);" data-value="2">装修公司</a></li>
+                            <li><a href="javascript:void(0);" data-value="4">装修问答</a></li>
+                            <li><a href="javascript:void(0);" data-value="5">装修知识</a></li>
+                        </ul>
+                    </div>
+                    <input id="search_ipt" type="text" placeholder="海量美图任你选">
+                    <span id="search"></span>
+                </div>
+            </div>
+            <!-- 菜单导航一级跟二级 -->
+            <div class="nav-list">
+                <div class="banner">
+                    <nav class="fl">
+                        <!-- 导航 -->
+                        <ul class="clearfix">
+                            <li <eq name="Think.config.CUR_MENU" value="index"> class="active"</eq>>
+                                <a href="http://{$Think.TBS_CITY_DOMAIN}/" data-type="0">首页</a></li>
+
+                            <li <eq name="Think.config.CUR_MENU" value="pic"> class="active arrow-d"
+                                <else/>class="arrow-d"</eq>>
+                                <!-- <li class="arrow-d"> -->
+                                <a href="http://{$Think.TBS_WWW_DOMAIN}/pic/" data-type="1">效果图 <span></span> </a>
+                            </li>
+
+                            <li <eq name="Think.config.CUR_MENU" value="savemoney"> class="active"</eq>>
+                                <a href="http://{$Think.TBS_WWW_DOMAIN}/shengqian/" rel="nofollow" data-type="0">省钱装修</a>
+                                <span></span>
+                            </li>
+
+                            <li <eq name="Think.config.CUR_MENU" value="xiaoqu"> class="active"</eq>>
+                                <a href="http://{$Think.TBS_CITY_DOMAIN}/anli/" data-type="0">装修案例</a></li>
+
+                            <li <eq name="Think.config.CUR_MENU" value="company"> class="active"</eq>>
+                                <a href="http://{$Think.TBS_CITY_DOMAIN}/zx/" data-type="0">装修公司</a></li>
+
+                            <!--  <li <eq name="Think.config.CUR_MENU" value="index"> class="active arrow-d"
+                                <else/>class="arrow-d"</eq>> -->
+                            <li class="arrow-d">
+                                <a href="http://{$Think.TBS_WWW_DOMAIN}/article/" data-type="2">装修指南 <span></span> </a>
+                            </li>
+
+                            <!-- <li <eq name="Think.config.CUR_MENU" value="index"> class="active code"
+                                <else/>class="code"</eq>> -->
+                            <li class="code">
+                                <a rel="nofollow" target="_blank" href="http://{$Think.TBS_WWW_DOMAIN}/mobile_tobosu/" data-type="0">APP下载 <span class="phone"></span> </a>
+                                <div class="app-download">
+                                    <a rel="nofollow" target="_blank" href="http://{$Think.TBS_WWW_DOMAIN}/mobile_tobosu/">
+                                        <div class="img"></div>
+                                        <p class="p1">下载APP</p>
+                                        <p class="p2">随时随地学装修</p>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="nav-show">
+                        <!-- 导航二级菜单 -->
+                        <ul class="clearfix pic" data-type="1">
+                            <li>
+                                <a href="http://{$Think.TBS_WWW_DOMAIN}/pic/tc/" target="_blank">
+                                    <span class="p1"></span>
+                                    <p>家居图册</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://{$Think.TBS_WWW_DOMAIN}/pic/mt/" target="_blank">
+                                    <span class="p2"></span>
+                                    <p>家居美图</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://{$Think.TBS_WWW_DOMAIN}/pic/gztc/" target="_blank">
+                                    <span class="p3"></span>
+                                    <p>公装图册</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://{$Think.TBS_WWW_DOMAIN}/piczt/" target="_blank">
+                                    <span class="p4"></span>
+                                    <p>精品专题</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="clearfix direct" data-type="2">
+                            <li>
+                                <a href="http://{$Think.TBS_WWW_DOMAIN}/article/" target="_blank">
+                                    <span class="i1"></span>
+                                    <p>学装修</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://{$Think.TBS_BAIKE_DOMAIN}/" target="_blank">
+                                    <span class="i2"></span>
+                                    <p>装修百科</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://{$Think.TBS_CLASS_DOMAIN}/" target="_blank">
+                                    <span class="i3"></span>
+                                    <p>装修课堂</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://{$Think.TBS_WWW_DOMAIN}/zhuanti/" target="_blank">
+                                    <span class="i4"></span>
+                                    <p>装修专题</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://{$Think.TBS_WENDA_DOMAIN}/" target="_blank">
+                                    <span class="i5"></span>
+                                    <p>装修问答</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://{$Think.TBS_ZHJ_DOMAIN}/">
+                                    <span class="i6"></span>
+                                    <p>装好家</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+
+    <!-- 轮播图 -->
+    <section class="slider">
+        <!-- 轮播图图片位置 -->
+        <div class="swiper-container">
+            <ul class="tbs-swiper">
+                <volist name="adsList" id="ads">
+                    <li class="tbs-swiper-items">
+                        <a href="{$ads.url}" target="_blank" <if condition="$ads.extlink eq 1"> rel="nofollow"</if>>
+                                    <img src="{$ads.img}" alt="土拨鼠装修网" />
+                                </a>
+                    </li>
+                </volist>
+            </ul>
+            <div class="tbs-sign sign"></div>
+            <div class="arrow">
+                <a href="javascript:;" class="pre"></a>
+                <a href="javascript:;" class="next"></a>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- 发标成功的 -->
+    <section class="count-result">
+        <div class="biling-result">
+            <span class="close"></span>
+            <p class="p1">您家的装修预算 <span class="total">?</span> 元</p>
+            <ul>
+                <li>
+                    <div class="price">
+                        材料费 : <span class="meterial"></span> 元
+                    </div>
+                </li>
+                <li>
+                    <div class="price">
+                        人工费 : <span class="man-make"></span> 元
+                    </div>
+                </li>
+                <li class="clearfix">
+                    <div class="price fl">
+                        设计费 : <span>0</span> 元
+                    </div>
+                    <div class="save fr">
+                        <i>立省</i><del class="design">?元</del>
+                    </div>
+                </li>
+                <li class="clearfix">
+                    <div class="price fl">
+                        质检费 : <span>0</span> 元
+                    </div>
+                    <div class="save fr">
+                        <i>立省</i><del class="quality">?元</del>
+                    </div>
+                </li>
+            </ul>
+            <p class="p2">*报价有疑问？稍后装修顾问将来电为您解答。</p>
+            <p class="p3">*该报价为毛坯半包价，实际装修报价以量房实测为准</p>
+        </div>
+    </section>
+
+
+
+    <!-- 服务价值 -->
+    <section class="search-value">
+        <div class="banner">
+            <div class="order">
+                <div class="tab">
+                    <a href="javascript:;" data-value="1" class="active">免费报价</a><a href="javascript:;" data-value="2">免费设计</a>
+                </div>
+                <!-- 免费报价 -->
+                <form action="" data-value="1">
+                    <p class="p1">4个装修公司报价对比，装修不花冤枉钱</p>
+                    <div class="form-item">
+                        <select class="select province-sel province" name="province">
+                                    <option value="0">选择省份</option>
+                                    <option value="12">A 安徽</option>
+                                    <option value="33">A 澳门</option>
+                                    <option value="1">B 北京</option>
+                                    <option value="22">C 重庆</option>
+                                    <option value="13">F 福建</option>
+                                    <option value="19">G 广东</option>
+                                    <option value="20">G 广西</option>
+                                    <option value="24">G 贵州</option>
+                                    <option value="28">G 甘肃</option>
+                                    <option value="3">H 河北</option>
+                                    <option value="8">H 黑龙江</option>
+                                    <option value="16">H 河南</option>
+                                    <option value="17">H 湖北</option>
+                                    <option value="18">H 湖南</option>
+                                    <option value="21">H 海南</option>
+                                    <option value="6">L 辽宁</option>
+                                    <option value="7">J 吉林</option>
+                                    <option value="10">J 江苏</option>
+                                    <option value="14">J 江西</option>
+                                    <option value="5">N 内蒙古</option>
+                                    <option value="30">N 宁夏</option>
+                                    <option value="29">Q 青海</option>
+                                    <option value="4">S 山西</option>
+                                    <option value="9">S 上海</option>
+                                    <option value="15">S 山东</option>
+                                    <option value="23">S 四川</option>
+                                    <option value="27">S 陕西</option>
+                                    <option value="2">T 天津</option>
+                                    <option value="34">T 台湾</option>	
+                                    <option value="26">X 西藏</option>
+                                    <option value="31">X 新疆</option>
+                                    <option value="32">X 香港</option>
+                                    <option value="25">Y 云南</option>
+                                    <option value="11">Z 浙江</option>
+                                </select><select class="select mgr0 city" name="city">
+                                    <option value="0">选择城市</option>
+                                </select>
+                    </div>
+                    <!-- 房屋面积 -->
+                    <div class="form-item">
+                        <input type="text" name="housearea" placeholder="请输入房屋面积" maxlength="4">
+                    </div>
+
+                    <div class="form-item">
+                        <input type="text" name="cellphone" maxlength="11" placeholder="请输入您的手机号码">
+                    </div>
+
+                    <input type="hidden" name="source" value="1014">
+                    <input type="hidden" name="comeurl" value="">
+                    <input type="hidden" name="userid" value="0">
+                    <input type="hidden" name="decorate_price" value="">
+
+                    <div class="form-item confirm">
+                        <input type="submit" class="submit" data-flag="1" value="立即申请">
+                    </div>
+
+                    <p class="p2">土拨鼠提供该项免费服务，绝不产生任何费用。为了您的利益,您的隐私将被严格保密！</p>
+                </form>
+                <!-- 免费设计 -->
+                <form action="" data-value="2" style="display:none;">
+                    <p class="p1">4套设计图任你挑选，空间利用率提高30%</p>
+                    <div class="form-item">
+                        <select class="select province-sel province" name="province">
+                                    <option value="0">选择省份</option>
+                                    <option value="12">A 安徽</option>
+                                    <option value="33">A 澳门</option>
+                                    <option value="1">B 北京</option>
+                                    <option value="22">C 重庆</option>
+                                    <option value="13">F 福建</option>
+                                    <option value="19">G 广东</option>
+                                    <option value="20">G 广西</option>
+                                    <option value="24">G 贵州</option>
+                                    <option value="28">G 甘肃</option>
+                                    <option value="3">H 河北</option>
+                                    <option value="8">H 黑龙江</option>
+                                    <option value="16">H 河南</option>
+                                    <option value="17">H 湖北</option>
+                                    <option value="18">H 湖南</option>
+                                    <option value="21">H 海南</option>
+                                    <option value="6">L 辽宁</option>
+                                    <option value="7">J 吉林</option>
+                                    <option value="10">J 江苏</option>
+                                    <option value="14">J 江西</option>
+                                    <option value="5">N 内蒙古</option>
+                                    <option value="30">N 宁夏</option>
+                                    <option value="29">Q 青海</option>
+                                    <option value="4">S 山西</option>
+                                    <option value="9">S 上海</option>
+                                    <option value="15">S 山东</option>
+                                    <option value="23">S 四川</option>
+                                    <option value="27">S 陕西</option>
+                                    <option value="2">T 天津</option>
+                                    <option value="34">T 台湾</option>	
+                                    <option value="26">X 西藏</option>
+                                    <option value="31">X 新疆</option>
+                                    <option value="32">X 香港</option>
+                                    <option value="25">Y 云南</option>
+                                    <option value="11">Z 浙江</option>
+                                </select><select class="select mgr0 city" name="city">
+                                    <option value="0">选择城市</option>
+                                </select>
+                    </div>
+                    <!-- 您的称呼 -->
+                    <div class="form-item">
+                        <input type="text" name="ownername" maxlength="15" placeholder="您的称呼">
+                    </div>
+                    <!-- 电话号码 -->
+                    <div class="form-item">
+                        <input type="text" name="cellphone" maxlength="11" placeholder="请输入您的手机号码">
+                    </div>
+
+                    <input type="hidden" name="source" value="1017">
+                    <input type="hidden" name="comeurl" value="">
+                    <input type="hidden" name="userid" value="0">
+
+                    <div class="form-item confirm">
+                        <input type="submit" class="submit" data-flag="1" value="立即申请">
+                    </div>
+
+                    <p class="p2">土拨鼠提供该项免费服务，绝不产生任何费用。为了您的利益,您的隐私将被严格保密！</p>
+                </form>
+            </div>
+            <ul class="clearfix">
+                <li>
+                    <a href="http://www.tobosu.com/shengqian/" target="_blank">
+                        <div class="info fl">
+                            <h3>省钱装修</h3>
+                            <p>全程6大免费服务</p>
+                        </div>
+                        <div class="icon fr">
+                            <span class="i-1"></span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.tobosu.com/www_t_price_page/" target="_blank">
+                        <div class="info fl">
+                            <h3>预算报价</h3>
+                            <p>预算看不懂，我帮你</p>
+                        </div>
+                        <div class="icon fr">
+                            <span class="i-2"></span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.tobosu.com/zhuangxiubao/" target="_blank">
+                        <div class="info fl">
+                            <h3>装修保障</h3>
+                            <p>装修界的安全卫士</p>
+                        </div>
+                        <div class="icon fr">
+                            <span class="i-3"></span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.tobosu.com/zhuangxiudai/" target="_blank">
+                        <div class="info fl">
+                            <h3>装修分期</h3>
+                            <p>帮你搞定装修资金</p>
+                        </div>
+                        <div class="icon fr">
+                            <span class="i-4"></span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 看图片 -->
+    <section class="modular figure">
+        <div class="banner">
+            <h3>看图片</h3>
+            <div class="type">
+                <a href="http://www.tobosu.com/pic/jianyue/" target="_blank">简约</a>/
+                <a href="http://www.tobosu.com/pic/oushi/" target="_blank">欧式</a>/
+                <a href="http://www.tobosu.com/pic/meishi/" target="_blank">美式</a>/
+                <a href="http://www.tobosu.com/pic/zhongshi/" target="_blank">中式</a>/
+                <a href="http://www.tobosu.com/pic/xiandai/" target="_blank">现代</a>/
+                <a href="http://www.tobosu.com/pic/tc/" target="_blank">全部美图</a>
+            </div>
+            <!-- 看图片显示的区域 -->
+            <div class="content clearfix">
+                <div class="pic-1 relate img fl">
+                    <!-- 图片1 -->
+                    <img src="{$impressionList[0].index_image_url}" onerror="this.src='{$Think.TBS_STATIC}/homepage/images/new_pc/loading.jpg'" alt="{$impressionList[0].title}">
+                    <div class="shadow">
+                        <div>
+                            <p>{$impressionList[0].title}</p>
+                            <a href="{$impressionList[0].url}" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pic-2 fl">
+                    <div class="top-pic relate img">
+                        <!-- 图片2 -->
+                        <img src="{$impressionList[1].index_image_url}" onerror="this.src='{$Think.TBS_STATIC}/homepage/images/new_pc/loading.jpg'" style="width:100%" alt="{$impressionList[1].title}">
+                        <div class="shadow">
+                            <div>
+                                <p>{$impressionList[1].title}</p>
+                                <a href="{$impressionList[1].url}" target="_blank">查看详情</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-pic clearfix">
+                        <div class="left-pic relate img fl">
+                            <!-- 图片3 -->
+                            <img src="{$impressionList[2].index_image_url}" onerror="this.src='{$Think.TBS_STATIC}/homepage/images/new_pc/loading.jpg'" alt="{$impressionList[2].title}">
+                            <div class="shadow min-shadow">
+                                <div>
+                                    <p>{$impressionList[2].title}</p>
+                                    <a href="{$impressionList[2].url}" target="_blank">查看详情</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right-pic relate img fl">
+                            <!-- 图片4 -->
+                            <img src="{$impressionList[3].index_image_url}" onerror="this.src='{$Think.TBS_STATIC}/homepage/images/new_pc/loading.jpg'" alt="{$impressionList[3].title}">
+                            <div class="shadow min-shadow">
+                                <div>
+                                    <p>{$impressionList[3].title}</p>
+                                    <a href="{$impressionList[3].url}" target="_blank">查看详情</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pic-3 relate img fl">
+                    <!-- 图片5 -->
+                    <img src="{$impressionList[4].index_image_url}" onerror="this.src='{$Think.TBS_STATIC}/homepage/images/new_pc/loading.jpg'" alt="{$impressionList[4].title}">
+                    <div class="shadow">
+                        <div>
+                            <p>{$impressionList[4].title}</p>
+                            <a href="{$impressionList[4].url}" target="_blank">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- 服务流程 -->
+    <section class="modular process">
+        <div class="banner">
+            <h3>服务流程</h3>
+            <div class="content">
+                <ul class="clearfix">
+                    <li>
+                        <div class="pic">
+                            <span class="i-1"></span>
+                        </div>
+                        <h4>在线预约</h4>
+                        <p>装修顾问一对一回访</p>
+                    </li>
+                    <li>
+                        <div class="pic">
+                            <span class="i-2"></span>
+                        </div>
+                        <h4>免费量房</h4>
+                        <p>4家装修公司免费量房设计</p>
+                    </li>
+                    <li>
+                        <div class="pic">
+                            <span class="i-3"></span>
+                        </div>
+                        <h4>确定方案</h4>
+                        <p>对比确认装修公司方案</p>
+                    </li>
+                    <li>
+                        <div class="pic">
+                            <span class="i-4"></span>
+                        </div>
+                        <h4>签订合同</h4>
+                        <p>签订合同及交付装修款</p>
+                    </li>
+                    <li>
+                        <div class="pic">
+                            <span class="i-5"></span>
+                        </div>
+                        <h4>装修施工</h4>
+                        <p>严格标准化施工原则</p>
+                    </li>
+                    <li>
+                        <div class="pic">
+                            <span class="i-6"></span>
+                        </div>
+                        <h4>竣工验收</h4>
+                        <p>验收通过全网装修指标</p>
+                    </li>
+                    <li>
+                        <div class="pic">
+                            <span class="i-7"></span>
+                        </div>
+                        <h4>装修保障</h4>
+                        <p>享受国家标准质保</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <!-- 装修公司 -->
+    <gt name="companycount" value="0">
+        <section class="modular company">
+            <div class="banner">
+                <h3>装修公司</h3>
+                <div class="type">
+                    <gt name="districtCount" value="0">
+                        <volist name="districtList" id="vo">
+                            <a href="http://{$Think.TBS_CITY_DOMAIN}/{$vo.pinyin}/" target="_blank">{$vo.districtname}</a>/
+                        </volist>
+                    </gt>
+                    <a href="http://{$Think.TBS_CITY_DOMAIN}/zx/" target="_blank">全部区域</a>
+                </div>
+
+                <!-- 装修公司详情信息 -->
+
+            </div>
+            <div class="content">
+                <div class="tbs-swiper">
+                    <foreach name="companys" item="vo" key="mkey">
+                        <ul class="clearfix tbs-swiper-items">
+
+                            <foreach name="vo" item="item">
+                                <li>
+                                    <a href="http://{$Think.TBS_WWW_DOMAIN}/company/{$item.comid}/" target="_blank">
+                                        <div class="decoration-pic">
+                                            <div class="company-pic img">
+                                                <img src="{$item.index_image_url}" onerror="this.src='{$Think.TBS_STATIC}/homepage/images/new_pc/loading.jpg'" alt="{$item.image_title}">
+                                            </div>
+                                            <div class="company-logo">
+                                                <img src="{$item.logo_url}" alt="{$item.comsimpname}">
+                                            </div>
+                                        </div>
+
+                                        <p class="name">{$item.comsimpname}</p>
+                                        <p class="score">
+                                            <volist name="item['stars']" id="vo">
+                                                <if condition="$vo eq 1">
+                                                    <span></span>
+                                                    <else/>
+                                                    <span class="empty"></span>
+                                                </if>
+
+                                            </volist>
+
+
+                                        </p>
+                                        <div class="info clearfix">
+                                            <p class="fl">设计方案: <span>{$item.piccount}</span></p>
+                                            <p class="fl">累计咨询用户: <span>{$item.visitnum}</span></p>
+                                        </div>
+                                        <div class="design alert-design" type="2">找TA免费设计</div>
+                                    </a>
+                                </li>
+
+                            </foreach>
+                        </ul>
+                    </foreach>
+
+
+                </div>
+                <div class="tbs-sign"></div>
+            </div>
+        </section>
+    </gt>
+
+    <!-- 装修案例 -->
+    <section class="modular decoration-case">
+        <div class="banner">
+            <h3>装修案例</h3>
+            <div class="type">
+                <a href="http://{$Think.TBS_CITY_DOMAIN}/anli/h1/" target="_blank">一居室</a>/
+                <a href="http://{$Think.TBS_CITY_DOMAIN}/anli/h2/" target="_blank">二居室</a>/
+                <a href="http://{$Think.TBS_CITY_DOMAIN}/anli/h3/" target="_blank">三居室</a>/
+                <a href="http://{$Think.TBS_CITY_DOMAIN}/anli/h4/" target="_blank">四居室</a>/
+                <a href="http://{$Think.TBS_CITY_DOMAIN}/anli/" target="_blank">全部案例</a>
+            </div>
+
+            <!-- 装修案例的列表图片 -->
+            <div class="content">
+                <div class="carouse">
+                    <ul class="clearfix tbs-swiper">
+                        <foreach name="caseList" item="vo" key="mkey">
+                            <li class="tbs-swiper-items">
+                                <foreach name="vo" item="item">
+                                    <div class="case-detail">
+                                        <!-- 装修案例的图图片展示 -->
+                                        <img src="{$item.coverurl}" onerror="this.src='{$Think.TBS_STATIC}/homepage/images/new_pc/loading.jpg'" alt="{$item.name}">
+                                        <div class="shadow">
+                                            <div class="info">
+                                                <p class="p1">{$item.housearea}m²/{$item.shi}居室/{$item.price}万/{$item.desmethod}</p>
+                                                <p class="p2">{$item.cityName}{$item.name} {$item.ownercall}</p>
+                                                <!-- 查看公司详情链接 -->
+                                                <a href="http://{$Think.TBS_WWW_DOMAIN}/anli/{$item.caseid}/" target="_blank">查看详情>> </a>
+                                            </div>
+                                        </div>
+                                        <div class="bottom clearfix">
+                                            <p class="fl">装修成这样要花多少钱?</p>
+                                            <div class="design alert-design fr" type="1">获取报价</div>
+                                        </div>
+                                    </div>
+                                </foreach>
+                            </li>
+                        </foreach>
+
+                    </ul>
+
+                </div>
+                <!-- 左右箭头 -->
+                <a class="arrow-l pre">
+                    <span></span>
+                </a>
+                <a class="arrow-r next">
+                    <span></span>
+                </a>
+            </div>
+        </div>
+        <!-- 左右两个箭头 -->
+    </section>
+
+    <!-- 看攻略 -->
+    <section class="modular guide">
+        <div class="banner">
+            <h3>看攻略</h3>
+            <div class="content">
+                <div class="title">
+                    <ul class="clearfix">
+                        <li data-value="1" class="active"><span></span><a href="javascript:;" class="learn">学装修</a></li>
+                        <li data-value="2"><span></span><a href="javascript:;" class="classroom">装修课堂</a></li>
+                        <li data-value="3"><span></span><a href="javascript:;" class="baike">装修百科</a></li>
+                        <li data-value="4"><span></span><a href="javascript:;" class="answer">装修问答</a></li>
+                    </ul>
+                </div>
+                <!--学装修-->
+                <div data-value="1" class="article clearfix">
+                    <foreach name="learningList" item="vo" key="mkey">
+
+                        <div>
+                            <h4>{$arrlearn[$mkey]}</h4>
+                            <ul>
+                                <foreach name="vo" item="item">
+                                    <li><a href="{$item.url}" target="_blank">{$item.title}</a></li>
+
+                                </foreach>
+                            </ul>
+                            <a href="http://www.tobosu.com/article/{$mkey}/" target="_blank">查看更多</a>
+                        </div>
+                    </foreach>
+                </div>
+                <!--装修课堂-->
+                <div data-value="2" class="article clearfix" style="display:none;">
+                    <foreach name="classList" item="vo" key="mkey">
+
+                        <div>
+                            <h4>{$arrclass[$mkey]}</h4>
+                            <ul>
+                                <foreach name="vo" item="item">
+                                    <li><a href="{$item.url}" target="_blank">{$item.title}</a></li>
+
+                                </foreach>
+                            </ul>
+                            <a href="http://class.tobosu.com/{$mkey}/" target="_blank">查看更多</a>
+                        </div>
+                    </foreach>
+                </div>
+                <!--装修百科-->
+                <div data-value="3" id="dictionary" class="article clearfix" style="display:none;">
+                    <foreach name="baikeList" item="vo" key="mkey">
+
+                        <div>
+                            <h4>{$mkey}</h4>
+                            <ul>
+                                <foreach name="vo" item="item">
+                                    <li><a href="{$item.url}" target="_blank">{$item.title}</a></li>
+
+                                </foreach>
+                            </ul>
+                            <a href="http://baike.tobosu.com/{$arrbaike[$mkey]}/" target="_blank">查看更多</a>
+                        </div>
+                    </foreach>
+                </div>
+                <!--装修问答-->
+                <div data-value="4" class="article clearfix" style="display:none;">
+                    <foreach name="wendaList" item="vo" key="mkey">
+
+                        <div>
+                            <h4>{$arrwenda[$mkey][1]}</h4>
+                            <ul>
+                                <foreach name="vo" item="item">
+                                    <li><a href="http://{$Think.TBS_WENDA_DOMAIN}/question/{$item.question_id}/" target="_blank">{$item.title}</a></li>
+
+                                </foreach>
+                            </ul>
+                            <a href="http://{$Think.TBS_WENDA_DOMAIN}/{$arrwenda[$mkey][0]}/" target="_blank">查看更多</a>
+                        </div>
+                    </foreach>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 广告位 -->
+    <if condition="$banner_across_data neq null">
+        <section class="advertisement">
+            <div class="banner">
+                <ul class="clearfix tbs-swiper">
+                    <volist name="banner_across_data" id="vo">
+                        <li class="tbs-swiper-items">
+                            <a href="{$vo.url}" target='_blank' rel="nofollow">
+                                <img src="{$vo.img}" onerror="this.src='{$Think.TBS_STATIC}/homepage/images/new_pc/loading.jpg'" alt="广告图">
+                            </a>
+                        </li>
+                    </volist>
+
+                </ul>
+
+            </div>
+        </section>
+    </if>
+
+    <!-- 了解土拨鼠 -->
+    <section class="modular consult">
+        <div class="banner">
+            <h3>了解土拨鼠</h3>
+
+            <div class="content">
+                <ul class="clearfix">
+                    <li>
+                        <div>
+                            <span class="i-1"></span>
+                        </div>
+                        <h5>9年装修经验</h5>
+                        <p>累计服务1000万中国家庭</p>
+                    </li>
+                    <li>
+                        <div>
+                            <span class="i-2"></span>
+                        </div>
+                        <h5>量房、设计、报价</h5>
+                        <p>不花一分钱，既省心又省力</p>
+                    </li>
+                    <li>
+                        <div>
+                            <span class="i-3"></span>
+                        </div>
+                        <h5>20多万合作装修公司</h5>
+                        <p>覆盖200多个城市装修公司合作伙伴</p>
+                    </li>
+                    <li>
+                        <div>
+                            <span class="i-4"></span>
+                        </div>
+                        <h5>大数据分析</h5>
+                        <p>给您最准确的装修报价，装修该花多少钱</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 提示模块 -->
+    <section class="alert-model">
+        <div class="title">
+            提示
+            <a href="javscript:;" class="fr close"></a>
+        </div>
+        <div class="content"></div>
+        <div class="btn close">确定</div>
+    </section>
+
+
+    <!-- 固定在右侧的导航 -->
+    <section class="fixed-nav">
+        <ul>
+            <li class="contact-qq">
+                <a href="javascript:;">
+                    <span class="s1"></span>
+                    <i>在线咨询</i>
+                </a>
+            </li>
+            <li class="sub-encode">
+                <a href="javascript:;">
+                    <span class="s2"></span>
+                    <i>关注有礼</i>
+                </a>
+                <ul class="encode">
+                    <li>
+                        <span class="app"></span>
+                        <b>土拨鼠APP</b>
+                        <p>随时随地学装修</p>
+                    </li>
+                    <li>
+                        <span class="wechat"></span>
+                        <b>微信服务号</b>
+                        <p>更多优惠等你来拿</p>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;" class="alert-design" type="2">
+                    <span class="s3"></span>
+                    <i>免费设计</i>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" class="alert-design" type="1">
+                    <span class="s4"></span>
+                    <i>装修报价</i>
+                </a>
+            </li>
+            <li class="back-top" style="display:none;">
+                <a href="javascript:;">
+                    <span class="s5"></span>
+                    <i>回到顶部</i>
+                </a>
+            </li>
+        </ul>
+    </section>
+
+
+    <!-- 发标成功微信关注 -->
+    <section class="forcus-us">
+        <div class="follow-wechat">
+            <span class="close"></span>
+            <p class="p1">微信扫一扫，订单随时看！</p>
+            <div></div>
+            <p class="p2"> <span></span> 申请成功，我们会尽快联系您！</p>
+        </div>
+    </section>
+
+    <!-- 弹屏的发单入口 -->
+    <section class="query-order" id="alert_order" style="display:none;">
+        <div class="shadow"></div>
+        <div class="bill clearfix">
+            <div class="tab fl">
+                <a href="javascript:;" data-value="1" class="active">免费报价</a>
+                <a href="javascript:;" data-value="2">免费设计</a>
+            </div>
+            <div class="content fl">
+                <!-- 关闭按钮 -->
+                <span class="close"></span>
+                <!-- 免费装修报价发单页面 -->
+                <div class="design order-content clearfix" data-value="1">
+                    <form action="" class="fl">
+                        <h3>装修计算器
+                            <span>今天已经有<em>4652位</em>业主获取了装修预算 </span>
+                        </h3>
+                        <!-- 选择城市 -->
+                        <div class="form-items">
+                            <div class="items clearfix">
+                                <label for="" class="fl">所在城市 : <span>*</span> </label>
+                                <div class="fl">
+                                    <select class="select province-sel province" name="province">
+                                                <option value="0">选择省份</option>
+                                                <option value="12">A 安徽</option>
+                                                <option value="33">A 澳门</option>
+                                                <option value="1">B 北京</option>
+                                                <option value="22">C 重庆</option>
+                                                <option value="13">F 福建</option>
+                                                <option value="19">G 广东</option>
+                                                <option value="20">G 广西</option>
+                                                <option value="24">G 贵州</option>
+                                                <option value="28">G 甘肃</option>
+                                                <option value="3">H 河北</option>
+                                                <option value="8">H 黑龙江</option>
+                                                <option value="16">H 河南</option>
+                                                <option value="17">H 湖北</option>
+                                                <option value="18">H 湖南</option>
+                                                <option value="21">H 海南</option>
+                                                <option value="6">L 辽宁</option>
+                                                <option value="7">J 吉林</option>
+                                                <option value="10">J 江苏</option>
+                                                <option value="14">J 江西</option>
+                                                <option value="5">N 内蒙古</option>
+                                                <option value="30">N 宁夏</option>
+                                                <option value="29">Q 青海</option>
+                                                <option value="4">S 山西</option>
+                                                <option value="9">S 上海</option>
+                                                <option value="15">S 山东</option>
+                                                <option value="23">S 四川</option>
+                                                <option value="27">S 陕西</option>
+                                                <option value="2">T 天津</option>
+                                                <option value="34">T 台湾</option>	
+                                                <option value="26">X 西藏</option>
+                                                <option value="31">X 新疆</option>
+                                                <option value="32">X 香港</option>
+                                                <option value="25">Y 云南</option>
+                                                <option value="11">Z 浙江</option>
+                                            </select> <select class="select mgr0 city" name="city">
+                                                <option value="0">选择城市</option>
+                                            </select>
+                                </div>
+                            </div>
+                            <span class="cue"></span>
+                        </div>
+                        <!-- 房屋面积 -->
+                        <div class="form-items">
+                            <div class="items clearfix">
+                                <label for="" class="fl">房屋面积 : <span>*</span> </label>
+                                <div class="fl">
+                                    <input type="text" name="housearea" placeholder="请输入房屋面积" maxlength="4">
+                                    <span>m²</span>
+                                </div>
+                            </div>
+                            <span class="cue"></span>
+                        </div>
+                        <!-- 房屋户型 -->
+                        <div class="form-items">
+                            <div class="items clearfix">
+                                <label for="" class="fl">房屋户型 : <span>*</span> </label>
+                                <!-- 房厅 -->
+                                <div class="fl">
+                                    <select name="s">
+                                                <option value="1">1室</option>
+                                                <option value="2">2室</option>
+                                                <option value="3">3室</option>
+                                                <option value="4">4室</option>
+                                                <option value="5">5室</option>
+                                                <option value="6">6室</option>
+                                            </select>
+                                    <select name="t">
+                                                    <option value="1">1厅</option>
+                                                    <option value="2">2厅</option>
+                                                    <option value="3">3厅</option>
+                                                    <option value="4">4厅</option>
+                                                    <option value="5">5厅</option>
+                                                    <option value="6">6厅</option>
+                                                </select>
+                                </div>
+                                <!-- 厨卫 -->
+                                <div class="fl second">
+                                    <select name="c">
+                                                <option value="1">1厨</option>
+                                                <option value="2">2厨</option>
+                                                <option value="3">3厨</option>
+                                                <option value="4">4厨</option>
+                                                <option value="5">5厨</option>
+                                                <option value="6">6厨</option>
+                                            </select>
+                                    <select name="w">
+                                                    <option value="1">1卫</option>
+                                                    <option value="2">2卫</option>
+                                                    <option value="3">3卫</option>
+                                                    <option value="4">4卫</option>
+                                                    <option value="5">5卫</option>
+                                                    <option value="6">6卫</option>
+                                                </select>
+                                    <select name="yt">
+                                                        <option value="1">1阳台</option>
+                                                        <option value="2">2阳台</option>
+                                                        <option value="3">3阳台</option>
+                                                        <option value="4">4阳台</option>
+                                                        <option value="5">5阳台</option>
+                                                        <option value="6">6阳台</option>
+                                                    </select>
+                                </div>
+                            </div>
+                            <span class="cue"></span>
+                        </div>
+                        <!-- 房屋面积 -->
+                        <div class="form-items">
+                            <div class="items clearfix">
+                                <label for="" class="fl">手机号码 : <span>*</span> </label>
+                                <div class="fl">
+                                    <input type="tel" name="cellphone" maxlength="11" placeholder="请输入您的手机号码">
+                                </div>
+                            </div>
+                            <span class="cue"></span>
+                        </div>
+
+                        <input type="hidden" name="source" value="1018">
+                        <input type="hidden" name="comeurl" value="">
+                        <input type="hidden" name="userid" value="0">
+                        <input type="hidden" name="decorate_price" value="">
+                        <!-- 开始计算按钮 -->
+                        <span class="circle">
+                            <em></em>
+                            <a class="submit" data-flag="1" data-value="1" href="javascript:;">
+                               <i>开始计算</i>
+                            </a>
+                        </span>
+                    </form>
+                    <!-- 计算结果 -->
+                    <div class="budget-result fr">
+                        <div class="result-title">
+                            装修预算报价为
+                            <span id="tatle">?</span> 元
+                        </div>
+                        <ul>
+                            <li>
+                                材料费 : <span id="meterial">?</span> 元
+                            </li>
+                            <li>
+                                人工费 : <span id="man_make">9999</span> 元
+                            </li>
+                            <li>
+                                设计费 : <span id="design">9999</span> 元
+                            </li>
+                            <li>
+                                质检费 : <span id="quality">9999</span> 元
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 免费装修设计发单页面 -->
+                <div class="offer order-content clearfix" data-value="2" style="display:none;">
+                    <form action="" class="fl">
+                        <h3>免费装修设计
+                            <span>今天已有<em>46524586人选择</em></span>
+                        </h3>
+                        <!-- 所在城市 -->
+                        <div class="form-items">
+                            <div class="items clearfix">
+                                <label for="" class="fl">所在城市 : <span>*</span> </label>
+                                <div class="fl">
+                                    <select class="select province-sel province" name="province">
+                                                <option value="0">选择省份</option>
+                                                <option value="12">A 安徽</option>
+                                                <option value="33">A 澳门</option>
+                                                <option value="1">B 北京</option>
+                                                <option value="22">C 重庆</option>
+                                                <option value="13">F 福建</option>
+                                                <option value="19">G 广东</option>
+                                                <option value="20">G 广西</option>
+                                                <option value="24">G 贵州</option>
+                                                <option value="28">G 甘肃</option>
+                                                <option value="3">H 河北</option>
+                                                <option value="8">H 黑龙江</option>
+                                                <option value="16">H 河南</option>
+                                                <option value="17">H 湖北</option>
+                                                <option value="18">H 湖南</option>
+                                                <option value="21">H 海南</option>
+                                                <option value="6">L 辽宁</option>
+                                                <option value="7">J 吉林</option>
+                                                <option value="10">J 江苏</option>
+                                                <option value="14">J 江西</option>
+                                                <option value="5">N 内蒙古</option>
+                                                <option value="30">N 宁夏</option>
+                                                <option value="29">Q 青海</option>
+                                                <option value="4">S 山西</option>
+                                                <option value="9">S 上海</option>
+                                                <option value="15">S 山东</option>
+                                                <option value="23">S 四川</option>
+                                                <option value="27">S 陕西</option>
+                                                <option value="2">T 天津</option>
+                                                <option value="34">T 台湾</option>	
+                                                <option value="26">X 西藏</option>
+                                                <option value="31">X 新疆</option>
+                                                <option value="32">X 香港</option>
+                                                <option value="25">Y 云南</option>
+                                                <option value="11">Z 浙江</option>
+                                            </select> <select class="select mgr0 city" name="city">
+                                                <option value="0">选择城市</option>
+                                            </select>
+                                </div>
+                            </div>
+                            <!-- 错误提示 -->
+                            <span class="cue"></span>
+                        </div>
+                        <!-- 您的称呼 -->
+                        <div class="form-items">
+                            <div class="items clearfix">
+                                <label for="" class="fl">您的称呼 : <span>*</span> </label>
+                                <div class="fl">
+                                    <input type="text" name="ownername" maxlength="15" placeholder="请输入您的名字">
+                                </div>
+                            </div>
+                            <!-- 错误提示 -->
+                            <span class="cue"></span>
+                        </div>
+                        <!-- 手机号码 -->
+                        <div class="form-items">
+                            <div class="items clearfix">
+                                <label for="" class="fl">手机号码 : <span>*</span> </label>
+                                <div class="fl">
+                                    <input type="tel" name="cellphone" maxlength="11" placeholder="填写手机号码,抢免费设计名额">
+                                </div>
+                            </div>
+                            <!-- 错误提示 -->
+                            <span class="cue"></span>
+                        </div>
+
+                        <input type="hidden" name="source" value="1019">
+                        <input type="hidden" name="comeurl" value="">
+                        <input type="hidden" name="userid" value="0">
+                        <!--   提交按钮 -->
+                        <div class="refer">
+                            <a href="javascript:;" data-flag="1" data-value="2" class="submit">立即申请</a>
+                        </div>
+                    </form>
+                    <!-- 右边广告位 -->
+                    <div class="ad fr">
+                        <ul class="clearfix">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 底部声明 -->
+                <p>*声明: 土拨鼠为您提供专业、透明、准确的装修报价，该项服务绝不产生任何费用，您的隐私将被严格保密！</p>
+            </div>
+        </div>
+        <div style="display:none;" class="consument clearfix">
+            <!-- 关闭按钮 -->
+            <span class="close"></span>
+            <!-- 报价结果 -->
+            <div class="calc-result fl">
+                <p class="p1">您家的装修预算 <span class="total">?</span> 元</p>
+                <ul>
+                    <li>
+                        <div class="price">
+                            材料费 : <span class="meterial"></span> 元
+                        </div>
+                    </li>
+                    <li>
+                        <div class="price">
+                            人工费 : <span class="man-make"></span> 元
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="price fl">
+                            设计费 : <span>0</span> 元
+                        </div>
+                        <div class="save fr">
+                            <i>立省</i><del class="design">?元</del>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="price fl">
+                            质检费 : <span>0</span> 元
+                        </div>
+                        <div class="save fr">
+                            <i>立省</i><del class="quality">?元</del>
+                        </div>
+                    </li>
+                </ul>
+                <p class="p2">*报价有疑问？稍后装修顾问将来电为您解答。</p>
+                <p class="p3">*该报价为毛坯半包价，实际装修报价以量房实测为准</p>
+            </div>
+            <!-- 完善信息 -->
+            <div class="perfect fr">
+                <form action="">
+                    <h3 class="title">
+                        完善信息<span>让我们更了解您的需求优先为您服务</span>
+                    </h3>
+                    <div class="items">
+                        <p>1.您家的房屋现状是 :</p>
+                        <ul class="clearfix">
+                            <li>
+                                <span></span>
+                                <p>
+                                    <a href="javascript:;" data-value="0"></a>毛坯房</p>
+                            </li>
+                            <li>
+                                <span class="i2"></span>
+                                <p>
+                                    <a href="javascript:;" data-value="1"></a>旧房翻新</p>
+                            </li>
+                            <li>
+                                <span class="i3"></span>
+                                <p>
+                                    <a href="javascript:;" data-value="2"></a>局部改造</p>
+                            </li>
+                            <input type="hidden" name="is_old">
+                        </ul>
+                    </div>
+                    <div class="items time">
+                        <p>2.您家准备什么时候装修 :</p>
+                        <ul class="clearfix">
+                            <li>
+                                <p>
+                                    <a href="javascript:;" data-value="1"></a> 半个月</p>
+                            </li>
+                            <li>
+                                <p>
+                                    <a href="javascript:;" data-value="2"></a> 一个月</p>
+                            </li>
+                            <li>
+                                <p>
+                                    <a href="javascript:;" data-value="3"></a> 两个月以内</p>
+                            </li>
+                            <li>
+                                <p>
+                                    <a href="javascript:;" data-value="4"></a> 两个月以上</p>
+                            </li>
+                            <input type="hidden" name="star_time">
+                        </ul>
+                    </div>
+                    <div class="items">
+                        <p>3.您家小区名称 : <input name="house_name" maxlength="50" type="text"></p>
+                    </div>
+
+                    <input type="hidden" name="order_id">
+
+                    <div class="btn formbit">提交</div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部发单界面 -->
+    <section class="bottom-order active query-order">
+        <div class="shadow"></div>
+        <!-- 底部发单的页面 -->
+        <div class="quote-page">
+            <div class="title clearfix">
+                <div class="fl top"></div>
+                <div class="fr radius"></div>
+            </div>
+            <div class="redbg"></div>
+            <div class="bg">
+                <div class="drop">
+                    <img src="{$Think.TBS_STATIC}/homepage/images/new_pc/bottom-title.png" alt="装修预算">
+                    <i></i>
+                    <span></span>
+                </div>
+                <!-- 原发单 -->
+                <div class="content">
+                    <div class="design clearfix">
+                        <form action="" class="fl">
+                            <h3>装修计算器
+                                <span>今天已经有<em>4652位</em>业主获取了装修预算 </span>
+                            </h3>
+                            <!-- 选择城市 -->
+                            <div class="form-items">
+                                <div class="items clearfix">
+                                    <label for="" class="fl">所在城市 : <span>*</span> </label>
+                                    <div class="fl">
+                                        <select class="select province-sel province" name="province">
+                                                            <option value="0">选择省份</option>
+                                                            <option value="12">A 安徽</option>
+                                                            <option value="33">A 澳门</option>
+                                                            <option value="1">B 北京</option>
+                                                            <option value="22">C 重庆</option>
+                                                            <option value="13">F 福建</option>
+                                                            <option value="19">G 广东</option>
+                                                            <option value="20">G 广西</option>
+                                                            <option value="24">G 贵州</option>
+                                                            <option value="28">G 甘肃</option>
+                                                            <option value="3">H 河北</option>
+                                                            <option value="8">H 黑龙江</option>
+                                                            <option value="16">H 河南</option>
+                                                            <option value="17">H 湖北</option>
+                                                            <option value="18">H 湖南</option>
+                                                            <option value="21">H 海南</option>
+                                                            <option value="6">L 辽宁</option>
+                                                            <option value="7">J 吉林</option>
+                                                            <option value="10">J 江苏</option>
+                                                            <option value="14">J 江西</option>
+                                                            <option value="5">N 内蒙古</option>
+                                                            <option value="30">N 宁夏</option>
+                                                            <option value="29">Q 青海</option>
+                                                            <option value="4">S 山西</option>
+                                                            <option value="9">S 上海</option>
+                                                            <option value="15">S 山东</option>
+                                                            <option value="23">S 四川</option>
+                                                            <option value="27">S 陕西</option>
+                                                            <option value="2">T 天津</option>
+                                                            <option value="34">T 台湾</option>	
+                                                            <option value="26">X 西藏</option>
+                                                            <option value="31">X 新疆</option>
+                                                            <option value="32">X 香港</option>
+                                                            <option value="25">Y 云南</option>
+                                                            <option value="11">Z 浙江</option>
+                                                        </select> <select class="select mgr0 city" name="city">
+                                                            <option value="0">选择城市</option>
+                                                        </select>
+                                    </div>
+                                </div>
+                                <span class="cue"></span>
+                            </div>
+                            <!-- 房屋面积 -->
+                            <div class="form-items">
+                                <div class="items clearfix">
+                                    <label for="" class="fl">房屋面积 : <span>*</span> </label>
+                                    <div class="fl">
+                                        <input type="text" name="housearea" placeholder="请输入房屋面积" maxlength="4">
+                                        <span>m²</span>
+                                    </div>
+                                </div>
+                                <span class="cue"></span>
+                            </div>
+                            <!-- 房屋户型 -->
+                            <div class="form-items">
+                                <div class="items clearfix">
+                                    <label for="" class="fl">房屋户型 : <span>*</span> </label>
+                                    <!-- 房厅 -->
+                                    <div class="fl">
+                                        <select name="s">
+                                                            <option value="1">1室</option>
+                                                            <option value="2">2室</option>
+                                                            <option value="3">3室</option>
+                                                            <option value="4">4室</option>
+                                                            <option value="5">5室</option>
+                                                            <option value="6">6室</option>
+                                                        </select>
+                                        <select name="t">
+                                                                <option value="1">1厅</option>
+                                                                <option value="2">2厅</option>
+                                                                <option value="3">3厅</option>
+                                                                <option value="4">4厅</option>
+                                                                <option value="5">5厅</option>
+                                                                <option value="6">6厅</option>
+                                                            </select>
+                                    </div>
+                                    <!-- 厨卫 -->
+                                    <div class="fl second">
+                                        <select name="c">
+                                                            <option value="1">1厨</option>
+                                                            <option value="2">2厨</option>
+                                                            <option value="3">3厨</option>
+                                                            <option value="4">4厨</option>
+                                                            <option value="5">5厨</option>
+                                                            <option value="6">6厨</option>
+                                                        </select>
+                                        <select name="w">
+                                                                <option value="1">1卫</option>
+                                                                <option value="2">2卫</option>
+                                                                <option value="3">3卫</option>
+                                                                <option value="4">4卫</option>
+                                                                <option value="5">5卫</option>
+                                                                <option value="6">6卫</option>
+                                                            </select>
+                                        <select name="yt">
+                                                                    <option value="1">1阳台</option>
+                                                                    <option value="2">2阳台</option>
+                                                                    <option value="3">3阳台</option>
+                                                                    <option value="4">4阳台</option>
+                                                                    <option value="5">5阳台</option>
+                                                                    <option value="6">6阳台</option>
+                                                                </select>
+                                    </div>
+                                </div>
+                                <span class="cue"></span>
+                            </div>
+                            <!-- 手机号码 -->
+                            <div class="form-items">
+                                <div class="items clearfix">
+                                    <label for="" class="fl">手机号码 : <span>*</span> </label>
+                                    <div class="fl">
+                                        <input type="tel" name="cellphone" maxlength="11" placeholder="请输入您的手机号码">
+                                    </div>
+                                </div>
+                                <span class="cue"></span>
+                            </div>
+
+                            <input type="hidden" name="source" value="1020">
+                            <input type="hidden" name="comeurl" value="">
+                            <input type="hidden" name="userid" value="0">
+                            <input type="hidden" name="decorate_price" value="">
+                            <!-- 开始计算按钮 -->
+                            <span class="circle">
+                                        <em></em>
+                                        <a class="submit" data-flag="1" data-value="3" href="javascript:;">
+                                           <i>开始计算</i>
+                                        </a>
+                                    </span>
+                        </form>
+                        <!-- 计算结果 -->
+                        <div class="budget-result fr">
+                            <div class="result-title">
+                                装修预算报价为
+                                <span id="tatle">?</span> 元
+                            </div>
+                            <ul>
+                                <li>
+                                    材料费 : <span id="meterial">?</span> 元
+                                </li>
+                                <li>
+                                    人工费 : <span id="man_make">?</span> 元
+                                </li>
+                                <li>
+                                    设计费 : <span id="design">?</span> 元
+                                </li>
+                                <li>
+                                    质检费 : <span id="quality">?</span> 元
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- 发单后弹出的完善信息 -->
+                <div style="display:none;" class="consument clearfix">
+                    <!-- 关闭按钮 -->
+                    <span class="close"></span>
+                    <!-- 报价结果 -->
+                    <div class="calc-result fl">
+                        <p class="p1">您家的装修预算 <span class="total">?</span> 元</p>
+                        <ul>
+                            <li>
+                                <div class="price">
+                                    材料费 : <span class="meterial"></span> 元
+                                </div>
+                            </li>
+                            <li>
+                                <div class="price">
+                                    人工费 : <span class="man-make"></span> 元
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="price fl">
+                                    设计费 : <span>0</span> 元
+                                </div>
+                                <div class="save fr">
+                                    <i>立省</i><del class="design">?元</del>
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <div class="price fl">
+                                    质检费 : <span>0</span> 元
+                                </div>
+                                <div class="save fr">
+                                    <i>立省</i><del class="quality">?元</del>
+                                </div>
+                            </li>
+                        </ul>
+                        <p class="p2">*报价有疑问？稍后装修顾问将来电为您解答。</p>
+                        <p class="p3">*该报价为毛坯半包价，实际装修报价以量房实测为准</p>
+                    </div>
+                    <!-- 完善信息 -->
+                    <div class="perfect fr">
+                        <form action="">
+                            <h3 class="title">
+                                完善信息<span>让我们更了解您的需求优先为您服务</span>
+                            </h3>
+                            <div class="items">
+                                <p>1.您家的房屋现状是 :</p>
+                                <ul class="clearfix">
+                                    <li>
+                                        <span></span>
+                                        <p>
+                                            <a href="javascript:;" data-value="0"></a>毛坯房</p>
+                                    </li>
+                                    <li>
+                                        <span class="i2"></span>
+                                        <p>
+                                            <a href="javascript:;" data-value="1"></a>旧房翻新</p>
+                                    </li>
+                                    <li>
+                                        <span class="i3"></span>
+                                        <p>
+                                            <a href="javascript:;" data-value="2"></a>局部改造</p>
+                                    </li>
+                                    <input type="hidden" name="is_old">
+                                </ul>
+                            </div>
+                            <div class="items time">
+                                <p>2.您家准备什么时候装修 :</p>
+                                <ul class="clearfix">
+                                    <li>
+                                        <p>
+                                            <a href="javascript:;" data-value="1"></a> 半个月</p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <a href="javascript:;" data-value="2"></a> 一个月</p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <a href="javascript:;" data-value="3"></a> 两个月以内</p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            <a href="javascript:;" data-value="4"></a> 两个月以上</p>
+                                    </li>
+                                    <input type="hidden" name="star_time">
+                                </ul>
+                            </div>
+                            <div class="items">
+                                <p>3.您家小区名称 : <input name="house_name" maxlength="50" type="text"></p>
+                            </div>
+
+                            <input type="hidden" name="order_id">
+
+                            <div class="btn formbit" data-type="bottom">提交</div>
+                        </form>
+                    </div>
+                </div>
+                <!-- 背景 -->
+                <div class="pic">
+                    <img src="{$Think.TBS_STATIC}/homepage/images/new_pc/bottom-pic.png" alt="">
+                </div>
+
+            </div>
+        </div>
+        <!-- 129 66 -->
+
+    </section>
+
+    <!-- 尾部 -->
+    <footer>
+        <div class="link">
+            <div class="banner">
+                <!-- 标签分类 -->
+                <div class="tab">
+                    <a href="javascript:;" data-value="1" class="active">热门城市</a>
+                    <a href="javascript:;" data-value="2">周边城市</a>
+                    <a href="javascript:;" data-value="3">友情链接</a>
+                    <volist name="moduleList['moduleKey']" id="arr">
+                        <a href="javascript:;" data-value="{$i+3}">{$arr}</a>
+                    </volist>
+
+                </div>
+                <div class="content">
+                    <!-- 对应标签的内容 -->
+                    <div data-value="1">
+                        <volist name='hotCitys' id='arr'>
+                            <a href="http://{$arr.citysimpname}.tobosu.com/" target="_blank">{$arr.simpname}装修</a>
+                        </volist>
+                    </div>
+                    <div data-value="2" style="display:none;">
+                        <!--周边-->
+                        <volist name='surroundingCities' id='arr'>
+                            <a href="http://{$arr.citysimpname}.tobosu.com/" target="_blank">{$arr.simpname}装修</a>
+                        </volist>
+                    </div>
+                    <div data-value="3" style="display:none;">
+                        <!--友链合作-->
+                        <volist name='flink' id='flink_detail'>
+                            <a href="{$flink_detail.url}" target="_blank">{$flink_detail.title}</a>
+                        </volist>
+                    </div>
+                    <volist name="moduleList['list']" id="vo">
+                        <div data-value="{$key+4}" style="display:none;">
+                            <!--自定义模块-->
+                            <volist name='vo' id='arr'>
+                                <a href="{$arr.url}" target="_blank">{$arr.title}</a>
+                            </volist>
+                        </div>
+                    </volist>
+                </div>
+            </div>
+        </div>
+        <!-- 底部关于我们 -->
+        <div class="about-us">
+            <div class="banner clearfix">
+                <!-- 关于我们 -->
+                <dl>
+                    <dt>关于我们</dt>
+                    <dd><a href="http://{$Think.TBS_WWW_DOMAIN}/help_article/1.html" target="_blank" rel="nofollow">关于土拨鼠</a></dd>
+                    <dd><a href="http://{$Think.TBS_WWW_DOMAIN}/help_article/3.html" target="_blank" rel="nofollow">联系我们</a></dd>
+                    <dd><a href="http://{$Think.TBS_WWW_DOMAIN}/help_article/5.html" target="_blank" rel="nofollow">人才招聘</a></dd>
+                </dl>
+                <!-- 网站帮助 -->
+                <dl>
+                    <dt>网站帮助</dt>
+                    <dd><a href="http://{$Think.TBS_WWW_DOMAIN}/help/">帮助中心</a></dd>
+                    <dd><a href="http://{$Think.TBS_WWW_DOMAIN}/sitemap.html" target="_blank" rel="nofollow">网站地图</a></dd>
+                    <dd><a href="http://form.mikecrm.com/f.php?t=kBkZpz" target="_blank" rel="nofollow">意见反馈</a></dd>
+                </dl>
+                <!-- 网站协议 -->
+                <dl>
+                    <dt>网站协议</dt>
+                    <dd><a href="http://i.tbscache.com/tbs/img/tbsInfo/hetong.pdf" target="_blank" rel="nofollow">土拨鼠装修保装修合同</a></dd>
+                    <dd><a href="http://{$Think.TBS_WWW_DOMAIN}/help_article/4.html" target="_blank" rel="nofollow">版权申明</a></dd>
+                </dl>
+                <!-- 手机登陆 -->
+                <div class="footer-link-m">
+                    <p>手机登陆: <a href="http://m.tobosu.com/">m.tobosu.com</a></p>
+                    <a href="http://{$Think.TBS_WWW_DOMAIN}/mobile_tobosu/" rel="nofollow"> <i></i> 土拨鼠APP </a>
+                    <a href="http://{$Think.TBS_WWW_DOMAIN}/mobile_tobosu?name=zhjApp" rel="nofollow"> <i></i> 装好家APP </a>
+                </div>
+                <!-- 安全卫士 -->
+                <div class="footer-link-p">
+                    <i></i>
+                    <div>
+                        <p>土拨鼠装修保</p>
+                        <p>装修界的安全卫士</p>
+                    </div>
+                </div>
+                <!-- 客服电话 -->
+                <div class="footer-link-t">
+                    <p class="p1">400-606-2220</p>
+                    <p class="p2">周一至周日: 08:00-22:00</p>
+                    <a href="javscript:;" class="contact-qq">联系在线客服</a>
+                </div>
+            </div>
+        </div>
+        <!-- 底部的备案信息 -->
+        <div class="record">
+            <div class="banner clearfix">
+                <div class="fl about">
+                    <p> 土拨鼠装修网-专注于中高端装修 保留所有权 @ 2008~{$Think.TBS_YEAR} tobosu.com</p>
+                    <p>
+                        <a href="http://www.miitbeian.gov.cn/state/outPortal/loginPortal.action" target="_blank" rel="nofollow">浙ICP备08011760号</a> ICP经营许可证：
+                        <a href="http://home.tobosu.com/About/about_icp.html" target="_blank" rel="nofollow">浙B2-20120133</a>
+                    </p>
+                    <p>深圳千万间信息科技有限公司 版权所有</p>
+                </div>
+                <div class="fl right">
+                    <a class="icon beian" href="http://home.tobosu.com/About/about_icp.html" rel="nofollow" title="经营信网站-备案证书" target="_blank"></a>
+                    <a class="icon pingji" href="http://home.tobosu.com/About/about_honor.html" rel="nofollow" title="企业信息-评级证书" target="_blank"></a>
+                    <a class="credit" id="_pinganTrust" target="_blank" rel="nofollow" href="http://c.trustutn.org/show?type=1&sn=201605171001502036"><img src="http://c.trustutn.org/images/cert/cert_0_1.png" /></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{$Think.TBS_STATIC}/lib/jquery-1.9.1.min.js?v={$Think.CDNTIME}"></script>
+    <script type="text/javascript" src="{$Think.TBS_STATIC}/lib/jquery.cookie.js?v={$Think.CDNTIME}"></script>
+    <script src="/tapi/passport/query_cityDict_reg_js"></script>
+    <script src="/tapi/passport/query_user_js"></script>
+
+
+    <script src="{$Think.TBS_STATIC}/homepage/js/new_pc/mySwiper.js?v={$Think.CDNTIME}"></script>
+
+    <script src="{$Think.TBS_STATIC}/homepage/js/new_pc/pc_order.js?v={$Think.CDNTIME}"></script>
+    <script src="{$Think.TBS_STATIC}/homepage/js/new_pc/main.js?v={$Think.CDNTIME}"></script>
+    <script src="{$Think.TBS_STATIC}/homepage/js/new_pc/header.js?v={$Think.CDNTIME}"></script>
+    <script src="{$Think.TBS_STATIC}/homepage/js/new_pc/footer.js?v={$Think.CDNTIME}"></script>
+    <script src="./抽离/底部_侧边_微信弹窗/fixednav_order.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,902 @@
+@function size($num) {
+    @return $num*1px;
+}
+
+$root:"/static/homepage/images/new_pc/";
+$url:"/static/homepage/images/new_pc/sprit.png";
+$tbscolor:#ff6f20;
+//弹屏的发单入口
+.query-order {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    .shadow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 100;
+        background-color: rgba(0, 0, 0, .5);
+    }
+    .bill {
+        position: absolute;
+        width: 980px;
+        height: 480px;
+        z-index: 1001;
+        top: 50%;
+        left: 50%;
+        margin: -240px 0 0 -490px;
+        background-color: white;
+        .tab {
+            width: 50px;
+            height: 100%;
+            a {
+                display: inline-block;
+                width: 100%;
+                height: 240px;
+                padding: 0 13px;
+                // line-height: 240px;
+                padding-top: 73px;
+                font-size: 18px;
+                text-align: center;
+                color: #333;
+                background-color: #eee;
+                &.active {
+                    background-color: #fe5f00;
+                    color: white;
+                }
+            }
+        }
+        // 发单页面的样式
+    }
+    .content {
+        width: 930px;
+        height: 100%;
+        position: relative;
+        >p {
+            position: absolute;
+            bottom: 24px;
+            width: 100%;
+            text-align: center;
+            color: #666;
+            font-size: 12px;
+        }
+        form {
+            width: 482px;
+            height: 100%;
+            padding: 65px 60px 15px 30px;
+            position: relative;
+            &::after {
+                content: "";
+                position: absolute;
+                width: 1px;
+                height: 310px;
+                background-color: #f2f2f2;
+                right: 0;
+                top: 79px;
+            }
+            h3 {
+                font-size: 22px;
+                color: #333;
+                font-weight: normal;
+                margin-bottom: 38px;
+                span {
+                    font-size: 14px;
+                    color: #999;
+                    margin-left: 12px;
+                }
+                em {
+                    font-style: normal;
+                    color: $tbscolor;
+                }
+            }
+        }
+        .items {
+            label {
+                font-size: 14px;
+                color: #333;
+                height: 39px;
+                line-height: 39px;
+                span {
+                    display: inline-block;
+                    color: $tbscolor;
+                    margin-left: 2px;
+                }
+            }
+            //表单的选择
+            >div {
+                width: 256px;
+                margin-left: 16px;
+                position: relative;
+                >span {
+                    position: absolute;
+                    font-size: 16px;
+                    color: #333;
+                    right: 9px;
+                    top: 9px;
+                }
+                select {
+                    width: 120px;
+                    height: 39px;
+                    padding-left: 12px;
+                    border: 1px solid #d8d8d8;
+                    margin-right: 10px;
+                    font-size: 14px;
+                    border-radius: 2px;
+                    color: #333;
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                }
+                input {
+                    height: 39px;
+                    width: 256px;
+                    font-size: 14px;
+                    padding-left: 12px;
+                    border: 1px solid #d8d8d8;
+                    border-radius: 2px;
+                    color: #333;
+                }
+            }
+        }
+        //免费报价
+        .design {
+            height: 100%;
+            .form-items {
+                .items {
+                    //户型选择第二层
+                    .second {
+                        margin-left: 91px;
+                        margin-top: 18px;
+                        select {
+                            width: 77px;
+                            margin-right: 7.5px;
+                            &:last-child {
+                                margin-right: 0;
+                            }
+                        }
+                    }
+                }
+                >span {
+                    display: inline-block;
+                    height: 18px;
+                    width: 100%;
+                    font-size: 14px;
+                    line-height: 22px;
+                    vertical-align: top;
+                    text-align: center;
+                    color: red;
+                }
+            }
+            //开始计算的按钮
+            span.circle {
+                position: absolute;
+                width: 140px;
+                height: 140px;
+                right: -70px;
+                top: 50%;
+                z-index: 2;
+                margin-top: -70px;
+                border: 1px solid #f2f2f2;
+                background-color: white;
+                border-radius: 50%;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    height: 36px;
+                    width: 20px;
+                    background-color: white;
+                    top: 50%;
+                    margin-top: -18px;
+                    left: -1px;
+                }
+                &::after {
+                    content: "";
+                    position: absolute;
+                    height: 36px;
+                    width: 20px;
+                    background-color: white;
+                    top: 50%;
+                    margin-top: -18px;
+                    right: -1px;
+                }
+                em {
+                    position: absolute;
+                    width: 90px;
+                    height: 90px;
+                    background-color: #ff7c34;
+                    top: 50%;
+                    left: 50%;
+                    z-index: 66;
+                    margin-top: -45px;
+                    margin-left: -45px;
+                    border-radius: 50%;
+                    animation: scale-bg 2s infinite;
+                }
+                a {
+                    display: inline-block;
+                    width: 90px;
+                    height: 90px;
+                    background-color: #FF7C34;
+                    border-radius: 50%;
+                    margin: 25px;
+                    position: relative;
+                    z-index: 666;
+                    &:hover {
+                        background-color: #ff500b;
+                    }
+                    i {
+                        display: inline-block;
+                        width: 44px;
+                        height: 44px;
+                        text-align: center;
+                        font-size: 16px;
+                        font-style: normal;
+                        color: white;
+                        margin: 23px;
+                    }
+                }
+            }
+            //计算结果
+            .budget-result {
+                width: 320px;
+                height: 100%;
+                padding-top: 57px;
+                margin-right: 31px;
+                .result-title {
+                    font-size: 22px;
+                    color: #333;
+                    margin-bottom: 38px;
+                    span {
+                        display: inline-block;
+                        width: 110px;
+                        text-align: center;
+                        margin: 0 9px;
+                        font-size: 30px;
+                        color: $tbscolor;
+                    }
+                }
+                ul {
+                    border: 1px solid #d8d8d8;
+                    padding: 29px 0;
+                    li {
+                        text-align: center;
+                        height: 40px;
+                        line-height: 40px;
+                        font-size: 14px;
+                        color: #666;
+                        span {
+                            display: inline-block;
+                            width: 40px;
+                            text-align: left;
+                            margin: 0 20px 0 24px;
+                        }
+                    }
+                }
+            }
+        }
+        //免费设计
+        .offer {
+            h3 {
+                margin-bottom: 48px;
+            }
+            .form-items {
+                height: 69px;
+                text-align: center;
+                .items {}
+                >span {
+                    display: inline-block;
+                    width: 100%;
+                    height: 30px;
+                    line-height: 30px;
+                    font-size: 12px;
+                    color: red;
+                    text-align: center;
+                }
+            }
+            //提交申请
+            .refer {
+                text-align: center;
+                a {
+                    display: inline-block;
+                    width: 180px;
+                    height: 40px;
+                    background-color: $tbscolor;
+                    color: white;
+                    line-height: 40px;
+                    text-align: center;
+                    font-size: 18px;
+                    margin-left: -29px;
+                    &:hover {
+                        background-color: #ff500b;
+                    }
+                }
+            }
+            // 免费报价右边广告
+            .ad {
+                height: 100%;
+                width: 350px;
+                padding-top: 118px;
+                margin-right: 46px;
+                ul {
+                    li {
+                        float: left;
+                        width: 102px;
+                        height: 102px;
+                        // border: 1px solid red;
+                        margin-bottom: 40px;
+                        margin-right: 13px;
+                        &:nth-child(1) {
+                            background: url($root+"bugget/1.png") no-repeat center center;
+                        }
+                        &:nth-child(2) {
+                            background: url($root+"bugget/2.png") no-repeat center center;
+                        }
+                        &:nth-child(3) {
+                            background: url($root+"bugget/3.png") no-repeat center center;
+                        }
+                        &:nth-child(4) {
+                            background: url($root+"bugget/4.png") no-repeat center center;
+                        }
+                        &:nth-child(5) {
+                            background: url($root+"bugget/5.png") no-repeat center center;
+                        }
+                        &:nth-child(6) {
+                            background: url($root+"bugget/6.png") no-repeat center center;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .consument {
+        position: absolute;
+        width: 980px;
+        height: 480px;
+        z-index: 1001;
+        top: 50%;
+        left: 50%;
+        margin: -240px 0 0 -490px;
+        background-color: white;
+        .calc-result {
+            width: 50%;
+            // height: 100%;
+            padding: 0px 45px;
+            margin-top: 59px;
+            margin-bottom: 36px;
+            border-right: 1px solid #e5e5e5;
+            .p1 {
+                text-align: center;
+                font-size: 20px;
+                line-height: 40px;
+                margin-bottom: 22px;
+                span {
+                    display: inline-block;
+                    width: 135px;
+                    font-size: 30px;
+                    color: #ff6f50;
+                    text-align: center;
+                }
+            }
+            ul {
+                border: 1px solid #e5e5e5;
+                padding: 35px 0;
+                margin-bottom: 30px;
+                li {
+                    height: 40px;
+                    font-size: 40px;
+                    line-height: 40px;
+                    color: #666;
+                    .price {
+                        width: 210px;
+                        height: 100%;
+                        padding-left: 43px;
+                        font-size: 16px;
+                        span {
+                            font-size: 18px;
+                            color: #000;
+                            display: inline-block;
+                            width: 70px;
+                            margin: 0 7px;
+                        }
+                    }
+                    .save {
+                        width: 175px;
+                        height: 100%;
+                        font-size: 14px;
+                        i {
+                            font-style: normal;
+                            color: #ff6f20;
+                            margin-right: 5px;
+                        }
+                    }
+                }
+            }
+            .p2 {
+                color: #ff6f20;
+                font-size: 12px;
+                margin-bottom: 5px
+            }
+            .p3 {
+                color: #333;
+                font-size: 12px;
+            }
+        }
+        .perfect {
+            width: 49%;
+            height: 100%;
+            padding: 50px;
+            .title {
+                font-size: 20px;
+                color: #333;
+                margin-bottom: 30px;
+                span {
+                    font-size: 14px;
+                    font-weight: normal;
+                    color: $tbscolor;
+                    display: inline-block;
+                    margin-left: 10px;
+                }
+            }
+            .items {
+                margin-bottom: 20px;
+                >p {
+                    font-size: 12px;
+                    margin-bottom: 20px;
+                    color: rgb(153, 153, 153);
+                }
+                ul {
+                    li {
+                        float: left;
+                        font-size: 12px;
+                        span {
+                            display: block;
+                            width: 80px;
+                            height: 60px;
+                            background: url($url) no-repeat -895px -465px;
+                            margin: 8px 17px;
+                            &.i2 {
+                                background-position: -988px -471px;
+                            }
+                            &.i3 {
+                                background-position: -1068px -468px;
+                            }
+                        }
+                        p {
+                            font-size: 12px;
+                            line-height: 25px;
+                            color: #333;
+                            text-align: center;
+                            margin-right: 10px;
+                        }
+                        a {
+                            display: inline-block;
+                            width: 13px;
+                            height: 13px;
+                            background: url($url) no-repeat -863px -534px;
+                            margin-right: 5px;
+                            vertical-align: text-bottom;
+                            &.active {
+                                background-position: -863px -515px;
+                            }
+                        }
+                    }
+                }
+                input {
+                    border: 1px solid #d8d8d8;
+                    height: 27px;
+                    width: 200px;
+                    padding-left: 10px;
+                }
+            }
+            .time {
+                li {
+                    margin-right: 10px;
+                }
+            }
+            .btn {
+                display: block;
+                width: 100px;
+                height: 30px;
+                color: white;
+                text-align: center;
+                line-height: 30px;
+                font-style: normal;
+                background-color: $tbscolor;
+                border-radius: 5px;
+                margin: 0 auto;
+                cursor: pointer;
+                &:hover {
+                    background-color: #ff500b;
+                }
+                &.formbit {
+                    background-color: #666;
+                    &:hover {
+                        background-color: #666;
+                    }
+                }
+            }
+        }
+    }
+    span.close {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        width: 16px;
+        height: 16px;
+        background: url($url) no-repeat -847px -560px;
+        cursor: pointer;
+    }
+}
+
+//底部的发单入口
+.bottom-order {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 95px;
+    z-index: 999;
+    .shadow {
+        position: absolute;
+        width: 100%;
+        height: 490px;
+        top: 45px;
+        bottom: 0;
+        background: url($root+"money1.png") no-repeat 11% 30%, url($root+"money2.png") no-repeat 90% 26%;
+        background-color: rgba(0, 0, 0, .7);
+    }
+    .quote-page {
+        width: 1029px;
+        height: 100%;
+        margin: 0 auto;
+        position: absolute;
+        background-color: transparent;
+        left: 50%;
+        margin-left: -514px;
+        z-index: 200;
+        box-shadow: 0 0 25px #b7b7b7;
+        // border-radius:0 54px 0 0;
+        border-top-right-radius: 54px;
+        .title {
+            width: 100%;
+            height: 79px;
+            background-color: transparent;
+            position: absolute;
+            top: 0;
+            .top {
+                width: 929px;
+                height: 100%;
+                background-color: white;
+            }
+            .radius {
+                height: 100%;
+                width: 100px;
+                background: url($root+"horn.png") no-repeat top right;
+            }
+        }
+        .bg {
+            width: 100%;
+            height: 490px;
+            background-color: white;
+            position: relative;
+            .drop {
+                width: 602px;
+                height: 93px;
+                background-color: white;
+                position: absolute;
+                top: -45px;
+                z-index: 999;
+                left: 50%;
+                margin-left: -301px;
+                cursor: pointer;
+                img {
+                    vertical-align: top;
+                    width: 100%;
+                }
+                i {
+                    position: absolute;
+                    width: 32px;
+                    height: 28px;
+                    top: 33px;
+                    right: -33px;
+                    background: white url($url) no-repeat -853px -411px;
+                }
+                span {
+                    display: none;
+                    position: absolute;
+                    width: 35px;
+                    height: 56px;
+                    background: white url($url) no-repeat -850px -453px;
+                    right: -35px;
+                    top: 17px;
+                    animation: gift .5s linear infinite alternate
+                }
+            }
+        }
+        .content {
+            background-color: transparent;
+            margin: 0 auto;
+            margin-top: 45px;
+            width: 960px;
+            padding: 0 15px;
+            border-top: 4px solid #FFE6D4;
+            z-index: 10;
+            &::before {
+                content: "";
+                position: absolute;
+                height: 394px;
+                width: 4px;
+                background-color: #FFE6D4;
+                left: 0;
+                top: 0;
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                height: 394px;
+                width: 4px;
+                background-color: #FFE6D4;
+                top: 0;
+                right: 0;
+            }
+            .design {
+                // background-color: greenyellow;
+                box-sizing: content-box;
+            }
+        }
+    }
+    //背景图片的盒子
+    .pic {
+        width: 1118px;
+        height: 60px;
+        position: absolute;
+        bottom: 345px;
+        left: 50%;
+        margin-left: -559px;
+        // margin: 
+        z-index: 1000;
+        // background-color: red;
+        img {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+    }
+    .redbg {
+        height: 50px;
+        width: 1118px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        margin-left: -559px;
+        background-color: #E8392C;
+    }
+    .consument h3.title {
+        position: relative !important;
+        height: 16px;
+        .perfect {
+            padding-top: 45px;
+            .items {
+                margin-bottom: 16px;
+            }
+        }
+        .calc-result {
+            margin-top: 39px;
+        }
+    }
+}
+
+.bottom-order.active {
+    .drop {
+        span {
+            display: block !important;
+        }
+    }
+}
+
+//固定在右侧的导航
+.fixed-nav {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    // margin-bottom: -183px;
+    height: 366px;
+    width: 66px;
+    z-index: 100;
+    margin-top: -183px;
+    >ul>li {
+        width: 100%;
+        height: 76px;
+        border: 1px solid #ddd;
+        border-top: 0;
+        &:first-child {
+            border: 1px solid #ddd;
+        }
+        a {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            // text-indent: -999px;
+            text-align: center;
+            background-color: white;
+            // transition: all .1s;
+            overflow: hidden;
+            &:hover {
+                transform: scale(1.02);
+                box-shadow: 0px 0 11px #ddd;
+                border: 1px solid #e5e5e5;
+            }
+            span {
+                display: block;
+                width: 35px;
+                height: 35px;
+                // background-color: red;
+                margin: 0 auto;
+                margin-top: 14px;
+                &.s1 {
+                    background: url($url) no-repeat -15px -206px;
+                }
+                &.s2 {
+                    background: url($url) no-repeat -16px -282px;
+                }
+                &.s3 {
+                    background: url($url) no-repeat -15px -355px;
+                }
+                &.s4 {
+                    background: url($url) no-repeat -16px -432px;
+                }
+                &.s5 {
+                    background: url($url) no-repeat -16px -500px;
+                }
+            }
+            i {
+                font-style: normal;
+                font-size: 12px;
+                color: #656565;
+            }
+        }
+    }
+    .sub-encode:hover {
+        ul.encode {
+            display: block;
+        }
+    }
+    ul.encode {
+        position: absolute;
+        left: -175px;
+        top: -65px;
+        border: 1px solid #ddd;
+        background-color: white;
+        display: none;
+        box-shadow: 0px 0 11px #ddd;
+        &::after {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border: 1px solid #ddd;
+            background-color: white;
+            transform: rotate(45deg);
+            right: -9px;
+            top: 50%;
+            margin-top: -5px;
+            border-left: 0;
+            border-bottom: 0;
+        }
+        li {
+            width: 156px;
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 13px;
+            span {
+                display: block;
+                width: 105px;
+                height: 105px;
+                margin: 0 auto;
+                &.app {
+                    background: url($url) no-repeat -818px -589px;
+                }
+                &.wechat {
+                    background: url($url) no-repeat -710px -589px;
+                }
+            }
+            b {
+                font-size: 14px;
+                line-height: 26px;
+                margin-bottom: 5px;
+                color: #000;
+            }
+            p {
+                font-size: 12px;
+                color: #666;
+            }
+        }
+    }
+}
+
+//发标成功关注微信
+.forcus-us {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1003;
+    display: none;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+.follow-wechat {
+    width: 450px;
+    height: 420px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -210px;
+    margin-left: -225px;
+    background-color: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    padding-top: 74px;
+    padding-bottom: 64px;
+    .close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 18px;
+        height: 18px;
+        background: url(http://i.tbscache.com/res/impression/images/collect_closeb.png?v=11111) 0 0 no-repeat;
+        &:hover {
+            background-position: 0 -35px;
+        }
+    }
+    .p1 {
+        font-size: 22px;
+        text-align: center;
+        color: #333;
+        margin-bottom: 22px;
+    }
+    div {
+        width: 189px;
+        height: 189px;
+        margin: 0 auto;
+        margin-bottom: 27px;
+        background: url($root + "wechat.png") no-repeat center center;
+    }
+    .p2 {
+        text-align: center;
+        font-size: 16px;
+        color: #666;
+        span {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            vertical-align: text-bottom;
+            background: url($root + "seccess.png") no-repeat center center;
+        }
+    }
+}
+
+@keyframes gift {
+    from {
+        transform: translateY(10px);
+    }
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes scale-bg {
+    0% {
+        transform: scale(1);
+        opacity: .8;
+    }
+    100% {
+        transform: scale(1.6);
+        opacity: 0;
+    }
+}
