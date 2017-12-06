@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script src="lib/jquery.min-1.72.js"></script>
+<script>
+    function waterfull(pic, data) {
+        // 1.声明数组  用于存放  当前最后图片的高度定位
+        var arr = [];
+        // 数组中的个数取决于屏幕的宽度 和 图片的宽度;
+        var arrNum = Math.floor(window.screen.width() / pic.width());
+        // 给数组中的每个索引添加一个预订数值
+        for (var i = 0; i < arrNum; i++) {
+            arr[i] = 0;
+        }
+
+        // 2.当传入一组图片的时候,循环数组中的每一个值,将图片加在数组中最小值也就是最低位置对应的位置下面
+        var pics = data; //假设需要将这对图片需要加在页面上
+        for (var i = 0; i < pics.length; i++) { //外层循环循环需要添加的图片
+            var index = 0;
+            var minValue = arr[index];
+            for (var j = 0; j < arr.length; j++) { //里层循环  找数组中最小值  最低位置  以便将图片加到该位置上
+                if (minValue > arr[i]) {
+                    minValue = arr[i];
+                    index = i;
+                }
+            }
+            // 循环完之后  就可以设置图片的位置
+            // 循环数组的目的  就是找到数组中最小的值  即找出最低的位置   以及索引
+            // minValue 就是图片的 top值  
+            // index * pic.width() 索引值乘于图片的宽度 就是图片的 left 值 
+
+            // 设置添加图片的位置
+            $(pics[i]).css({
+                top: minValue,
+                left: index * pic.width()
+            });
+
+            // 最后  将当前位置对应的数组的值改变为当前的高度
+            arr[i] = minValue + $(pics[i]).height();
+        }
+    }
+</script>
+
+
+<script>
+    /**
+     * 使用瀑布流要求子元素的类名为item;
+     * /                                                                                                          使用瀑布流 要求其子元素的类名为item
+     */
+    $.fn.extend({
+        waterfall: function() {
+            var $this = this;
+            // 1.声明一个数组,用于存放高度/数量
+            var arrHeigth = [];
+            var arrNum = Math.floor(window.screen.width() / $('.item').width()); //定义数组的长度数量
+            //给每个数组一个初始值
+            for (var i = 0; i < arrNum; i++) {
+                arrHeigth[i] = 0;
+            }
+            var margin = (window.screen.width() - arrNum * $('.item').width()) / (arrNum + 1);
+
+            //2.将对象下面的子元素使用瀑布流布局
+            $this.children('.item').each(function(index, element) {
+                var minIndex = 0; //假设数组中值最小的索引是0
+                var minValue = arrHeigth[minIndex]; //假设数组中最小的值是arrHeigth[minIndex]
+                for (var i = 0; i < arrHeigth.length; i++) {
+                    if (minValue > arrHeigth[i]) {
+                        minValue = arrHeigth[i];
+                        minIndex = i;
+                    }
+                }
+                //循环结束 可以知道数组中最小值 及其位置
+                // 使用最小值和最小值对应的索引设置图片的位置  top left
+                $(element).css({
+                    top: minValue,
+                    left: minIndex * $('.item').width() + margin * (minIndex + 1)
+                });
+
+                //最后 将对应索引的高度改为当前 高度
+                arrHeigth[minIndex] = minValue + $(element).height();
+            });
+            //支持链式编程   将对象返回
+            return this;
+        }
+    });
+</script>
