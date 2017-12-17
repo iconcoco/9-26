@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .box {
+            width: 600px;
+            height: 100px;
+            border: 6px solid red;
+            position: relative;
+        }
+        
+        ul {
+            width: 200%;
+            list-style: none;
+            position: absolute;
+            top: 0;
+            /*left: -105px;*/
+        }
+        
+        li {
+            height: 100px;
+            width: 100px;
+            float: left;
+            margin-right: 5px;
+            background-color: pink;
+        }
+        
+        li.active {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li class="active"></li>
+
+
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <!--<li></li>
+            <li></li>
+            <li></li>
+            <li></li>-->
+        </ul>
+    </div>
+    <input type="button" value="pre" class="pre">
+    <input type="button" value="next" class="next">
+
+</body>
+
+</html>
+<script src="./plugin/jquery-2.2.2.min.js"></script>
+<script>
+    var container = $(".box").width(); //容器的宽度 用以计算中心点
+    var center = Math.floor(container / 2),
+        flag = 1; //中心点
+
+    var parent = $("ul"),
+        eles = parent.children(),
+        index = 0,
+        total_length = eles.length,
+        lastEle = eles.eq(total_length - 1),
+        width = eles.outerWidth(true);;
+
+
+
+    //向右
+    function pullCenter() {
+        var current = $(".active"),
+            width = current.outerWidth(true);
+
+        index = current.index();
+        var dis = width + current.position().left + parent.position().left; //当前活动的div相对可视区的左侧距离
+        //判断是否超出中间
+        if (dis > center) {
+            var gap = dis - center;
+            parent.animate({
+                "left": parent.position().left - gap + "px"
+            }, function() {
+                //可以点击
+                flag = 1;
+            });
+        } else {
+            //没有超出中间
+            flag = 1;
+        }
+    };
+    //向左
+    function takeBack() {
+        var current = $(".active"),
+            width = current.outerWidth(true);
+
+        index = current.index();
+
+        var dis = width + current.position().left + parent.position().left;
+
+        if (dis < center) {
+            //左滑动的时候 判断左侧是否有超出的部分
+            if (parent.position().left < 0) {
+                var gap = center - dis;
+                //判断盒子移动的距离
+                if (parent.position().left < -gap) {
+                    parent.animate({
+                        "left": parent.position().left + gap + "px"
+                    }, function() {
+                        flag = 1;
+                    });
+                } else {
+                    parent.animate({
+                        "left": "0px"
+                    }, function() {
+                        flag = 1;
+                    });
+                }
+            } else {
+                //左侧没有超出的部分
+                flag = 1;
+            }
+            return;
+        }
+
+        flag = 1;
+    }
+    //目标按钮
+    function target() {
+        //判断当前点击的
+        var current = $(".active"),
+            width = current.outerWidth(true);
+
+        index = current.index();
+
+        var dis = width + current.position().left + parent.position().left;
+
+        if (dis > center) {
+            //点击的是右侧的图片
+            var endPostion = lastEle.position().left, //最后一个li的距离
+                currentPositon = current.position().left, //当前的距离
+                spacing = endPostion - currentPositon;
+
+            //判断是否到最后是否有更多
+            if (spacing <= center) {
+                // console.log("我是有底线的!");
+                //然后再往下移动
+                eles.eq(index).addClass("active").siblings(eles).removeClass("active");
+                var arr = [];
+                for (var i = 0; i < 6; i++) {
+                    var str = "<li>" + i + "</li>";
+                    arr.push(str);
+                };
+
+                //添加到父元素中 同时设置宽度;
+                parent.append(arr.join("")).width(parent.width() + width * arr.length);
+                //重新刷新一下ul长度
+                eles = parent.children();
+                total_length = eles.length;
+                lastEle = eles.eq(total_length - 1);
+
+                pullCenter();
+
+            } else {
+                var gap = dis - center;
+                parent.animate({
+                    "left": parent.position().left - gap + "px"
+                });
+            }
+
+        } else {
+            //点击的是左侧的图片
+
+            //判断是否要移动到中间
+            if (parent.position().left < 0) {
+                var gap = center - dis;
+                //     //判断盒子移动的距离
+                if (parent.position().left < -gap) {
+                    parent.animate({
+                        "left": parent.position().left + gap + "px"
+                    });
+                } else {
+                    parent.animate({
+                        "left": "0px"
+                    });
+                }
+            }
+        }
+
+    }
+
+    var pre = $(".pre"),
+        next = $(".next");
+
+    //判断一番放在中间
+    pullCenter();
+
+    next.click(function() {
+        if (!flag) return;
+        flag = 0;
+
+        index++;
+
+        var endPostion = lastEle.position().left, //最后一个li的距离
+            currentPositon = eles.eq(index).position().left, //当前的距离
+            spacing = endPostion - currentPositon;
+
+
+        //判断后面是否已经没有内容了
+        if (spacing <= center) {
+
+            console.log("我是有底线的");
+            var arr = [];
+
+            for (var i = 0; i < 6; i++) {
+                var str = "<li>" + i + "</li>";
+                arr.push(str);
+            };
+
+            //添加到父元素中 同时设置宽度;
+            parent.append(arr.join("")).width(parent.width() + width * arr.length);
+            //重新刷新一下ul长度
+            eles = parent.children();
+            total_length = eles.length;
+            lastEle = eles.eq(total_length - 1);
+
+            //然后再往下移动
+            eles.eq(index).addClass("active").siblings(eles).removeClass("active");
+            pullCenter();
+
+
+            flag = 1;
+            return;
+        };
+
+        eles.eq(index).addClass("active").siblings(eles).removeClass("active");
+        pullCenter();
+    });
+
+    pre.click(function() {
+        if (!flag) return;
+        flag = 0;
+
+        index--;
+        //判断是否已经滑到第一张
+        if (index < 0) {
+            index = 0;
+            console.log("到头到头了")
+            flag = 1;
+            return;
+        }
+        eles.eq(index).addClass("active").siblings(eles).removeClass("active");
+        takeBack();
+    });
+
+    parent.on("click", "li", function() {
+        index = $(this).index();
+        $(this).addClass("active").siblings(eles).removeClass("active");
+        target();
+    });
+</script>
