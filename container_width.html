@@ -95,8 +95,10 @@
         if (dis > center) {
             var gap = dis - center;
 
+            var move_dis = parent.position().left - gap + width / 2;
+
             parent.animate({
-                "left": parent.position().left - gap + width / 2 + "px"
+                "left": move_dis > 0 ? 0 : move_dis + "px"
             }, function() {
                 //可以点击
                 flag = 1;
@@ -121,8 +123,11 @@
                 var gap = center - dis;
                 //判断盒子移动的距离
                 if (parent.position().left < -gap) {
+
+                    var move_dis = parent.position().left + gap + width / 2;
+
                     parent.animate({
-                        "left": parent.position().left + gap + width / 2 + "px"
+                        "left": move_dis > 0 ? 0 : move_dis + "px"
                     }, function() {
                         flag = 1;
                     });
@@ -179,9 +184,10 @@
                 pullCenter();
 
             } else {
-                var gap = dis - center;
+                var gap = dis - center,
+                    move_dis = parent.position().left - gap + width / 2;
                 parent.animate({
-                    "left": parent.position().left - gap + width / 2 + "px"
+                    "left": move_dis > 0 ? 0 : move_dis + "px"
                 });
             }
 
@@ -193,8 +199,11 @@
                 var gap = center - dis;
                 //     //判断盒子移动的距离
                 if (parent.position().left < -gap) {
+
+                    var move_dis = parent.position().left + gap + width / 2;
+
                     parent.animate({
-                        "left": parent.position().left + gap + width / 2 + "px"
+                        "left": move_dis > 0 ? 0 : move_dis + "px"
                     });
                 } else {
                     parent.animate({
