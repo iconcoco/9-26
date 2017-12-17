@@ -17,6 +17,7 @@
             height: 100px;
             border: 6px solid red;
             position: relative;
+            overflow: hidden;
         }
         
         ul {
@@ -93,8 +94,9 @@
         //判断是否超出中间
         if (dis > center) {
             var gap = dis - center;
+
             parent.animate({
-                "left": parent.position().left - gap + "px"
+                "left": parent.position().left - gap + width / 2 + "px"
             }, function() {
                 //可以点击
                 flag = 1;
@@ -120,7 +122,7 @@
                 //判断盒子移动的距离
                 if (parent.position().left < -gap) {
                     parent.animate({
-                        "left": parent.position().left + gap + "px"
+                        "left": parent.position().left + gap + width / 2 + "px"
                     }, function() {
                         flag = 1;
                     });
@@ -179,7 +181,7 @@
             } else {
                 var gap = dis - center;
                 parent.animate({
-                    "left": parent.position().left - gap + "px"
+                    "left": parent.position().left - gap + width / 2 + "px"
                 });
             }
 
@@ -192,7 +194,7 @@
                 //     //判断盒子移动的距离
                 if (parent.position().left < -gap) {
                     parent.animate({
-                        "left": parent.position().left + gap + "px"
+                        "left": parent.position().left + gap + width / 2 + "px"
                     });
                 } else {
                     parent.animate({
